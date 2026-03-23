@@ -1,0 +1,261 @@
+import { 
+    Search, 
+    PenTool, 
+    Zap, 
+    Code2, 
+    Database, 
+    LineChart,
+    ShieldCheck, 
+    Rocket, 
+    Activity,
+    Cpu,
+    BrainCircuit,
+    Layers,
+    Palette,
+    FileText,
+    Users,
+    BarChart3,
+    RefreshCcw,
+    Workflow,
+    Settings,
+    Lock,
+    Network,
+    Terminal,
+    Container,
+    Cloud,
+    PieChart,
+    Lightbulb,
+    Target,
+    RefreshCw
+} from 'lucide-react';
+import { DeliveryStep } from '@/components/delivery-process-section';
+
+export interface ServiceContent {
+    title: string;
+    heroTitle: string;
+    heroDesc: string;
+    imageSrc?: string;
+    featureImageSrc?: string;
+    featureTitle: string;
+    featureDesc: string;
+    bannerText: string;
+    quoteTitle: string;
+    quoteText: string;
+    quoteDesc: string;
+    deliveryTitle: string;
+    deliverySteps: DeliveryStep[];
+    ctaTitle: string;
+    ctaDesc: string;
+}
+
+export const servicesData: Record<string, ServiceContent> = {
+    'software-development': {
+        title: 'Web Application Development',
+        heroTitle: 'Web Application Development',
+        heroDesc: 'Working on complicated web applications with ease requires expertise and experience. Our team of software developers will help you from design to deployment.',
+        imageSrc: '/assets/services-page/software-dev-image.jpg',
+        featureImageSrc: '/assets/services-page/software-dev-image-2.jpg',
+        featureTitle: 'Modern Web Application Development For Scalable Digital Platforms',
+        featureDesc: 'Scalable solutions for modern business require a deep understanding of distributed systems and user-centric design. We build platforms that not only meet today\'s demands but are engineered for tomorrow\'s growth.',
+        bannerText: 'Trusted Technology Expertise',
+        quoteTitle: 'Build Scalable Web Applications with Our Expert Development Team',
+        quoteText: 'Turn Your Digital Vision into Powerful Web Applications',
+        quoteDesc: 'There is more than one way to develop web applications, but we focus on the path that leads to long-term sustainability and performance. Our expert development team works as an extension of your own, ensuring every line of code aligns with your commercial objectives.',
+        deliveryTitle: 'Our Web Development Process',
+        deliverySteps: [
+            { id: '01', title: 'Requirement Analysis', icon: Search, desc: 'Identifying user needs and outlining the comprehensive project scope to ensure absolute alignment.' },
+            { id: '02', title: 'Concept & Design', icon: PenTool, desc: 'Creating high-fidelity prototypes and intuitive user interfaces based on verified requirements.' },
+            { id: '03', title: 'Strategy', icon: Zap, desc: 'Defining the optimal technology stack and creating a detailed development roadmap for scalability.' },
+            { id: '04', title: 'Front-end Development', icon: Code2, desc: 'Building the visual and interactive components of the web application using modern frameworks.' },
+            { id: '05', title: 'Back-end/Server Development', icon: Database, desc: 'Developing robust server-side logic, API integrations, and secure database architectures.' },
+            { id: '06', title: 'Testing & QA', icon: ShieldCheck, desc: 'Conducting rigorous manual and automated testing to ensure a stable, secure, and bug-free solution.' },
+            { id: '07', title: 'Deployment & Launch', icon: Rocket, desc: 'Deploying the final application to live production environments with zero-downtime strategies.' },
+            { id: '08', title: 'Solutions & Services', icon: Activity, desc: 'Providing continuous monitoring, improvements, and feature updates to maintain performance.' },
+        ],
+        ctaTitle: 'Start Building with a Dedicated Engineering Team',
+        ctaDesc: 'NeuralNet provides automated and manual software development solutions to help you build and scale your web applications.'
+    },
+    'ml-and-ai': {
+        title: 'ML and AI Solutions',
+        heroTitle: 'ML and AI Solutions',
+        heroDesc: 'From intelligent automation to predictive analytics, we help businesses leverage the power of Artificial Intelligence to drive innovation and efficiency.',
+        imageSrc: '/assets/services-page/Ml_AI.jpg',
+        featureImageSrc: '/assets/services-page/Ml_AI-2.jpg',
+        featureTitle: 'Intelligent Automation & Advanced Predictive Insights',
+        featureDesc: 'Our AI and Machine Learning services help you unlock the hidden value in your data. We design solutions that automate complex tasks, predict trends, and enhance decision-making.',
+        bannerText: 'Harnessing Neural Intelligence',
+        quoteTitle: 'Empower Your Business with data-driven AI Strategies',
+        quoteText: 'AI is not just a tool; it\'s the engine for your future growth.',
+        quoteDesc: 'Success in AI requires more than just algorithms; it requires a deep understanding of your data landscape and commercial objectives. We build ethical, scalable, and impactful AI solutions.',
+        deliveryTitle: 'Our AI Delivery Process',
+        deliverySteps: [
+            { id: '01', title: 'Data Discovery', icon: Search, desc: 'Identifying and auditing your data assets to determine AI readiness.' },
+            { id: '02', title: 'Data Preprocessing', icon: Database, desc: 'Cleaning and structuring raw data for high-quality model training.' },
+            { id: '03', title: 'Feature Engineering', icon: Cpu, desc: 'Extracting informative features that drive model accuracy and performance.' },
+            { id: '04', title: 'Model Selection', icon: BrainCircuit, desc: 'Choosing the optimal algorithms tailored to your specific business problem.' },
+            { id: '05', title: 'Training & Refinement', icon: Layers, desc: 'Iterative training and hyperparameter tuning to reach desired accuracy levels.' },
+            { id: '06', title: 'Validation & Testing', icon: ShieldCheck, desc: 'Rigorous validation against real-world scenarios to ensure reliability.' },
+            { id: '07', title: 'Integration', icon: Activity, desc: 'Seamlessly deploying AI models into your existing business ecosystems.' },
+            { id: '08', title: 'Monitoring & Growth', icon: Activity, desc: 'Continuous performance tracking and retraining to ensure long-term value.' },
+        ],
+        ctaTitle: 'Ready to Innovate with Artificial Intelligence?',
+        ctaDesc: 'Our team of AI experts is ready to help you build the next generation of intelligent business solutions.'
+    },
+    'content': {
+        title: 'Strategic Content Creation',
+        heroTitle: 'Strategic Content Creation',
+        heroDesc: 'Communicate your brand\'s story with clarity and impact. We blend creative storytelling with data-driven strategy to produce content that resonates.',
+        imageSrc: '/assets/services-page/content.jpg',
+        featureImageSrc: '/assets/services-page/content-2.jpg',
+        featureTitle: 'Brand Communication that Captures Attention and Drives Action',
+        featureDesc: 'We help organizations build authority and trust through high-quality, strategic content. From whitepapers to digital campaigns, we ensure your message is heard.',
+        bannerText: 'Strategic Brand Communication',
+        quoteTitle: 'Build Authority and Engagement with Impactful Storytelling',
+        quoteText: 'Content is the connection between your brand and your audience.',
+        quoteDesc: 'Great content is more than just words on a page; it\'s a strategic asset that builds trust and drives growth. We focus on quality over quantity, ensuring every piece has a purpose.',
+        deliveryTitle: 'Our Content Process',
+        deliverySteps: [
+            { id: '01', title: 'Content Audit', icon: Search, desc: 'Reviewing existing assets and identifying gaps in your content strategy.' },
+            { id: '02', title: 'Strategy Design', icon: PenTool, desc: 'Crafting a content roadmap aligned with your brand voice and goals.' },
+            { id: '03', title: 'Creative Ideation', icon: Palette, desc: 'Generating innovative content concepts that capture audience attention.' },
+            { id: '04', title: 'Copywriting & Design', icon: FileText, desc: 'Producing high-quality written and visual content across all channels.' },
+            { id: '05', title: 'Review & Polishing', icon: Users, desc: 'Ensuring absolute consistency and quality through rigorous peer reviews.' },
+            { id: '06', title: 'Publishing & Distribution', icon: Rocket, desc: 'Strategically launching content across selected platforms and networks.' },
+            { id: '07', title: 'Performance Analysis', icon: BarChart3, desc: 'Tracking engagement and conversion metrics to measure impact.' },
+            { id: '08', title: 'Optimization Iterations', icon: RefreshCcw, desc: 'Refining the content strategy based on real-world data and feedback.' },
+        ],
+        ctaTitle: 'Need a Content Strategy that Actually Works?',
+        ctaDesc: 'Our team of strategists and creators is ready to help you tell your brand\'s story to the world.'
+    },
+    'automation': {
+        title: 'Intelligent Automation',
+        heroTitle: 'Intelligent Automation',
+        heroDesc: 'Maximize operational efficiency with smart workflows. We help businesses automate repetitive tasks and optimize complex processes through intelligent technology.',
+        imageSrc: '/assets/services-page/Automation.jpg',
+        featureImageSrc: '/assets/services-page/Automation-2.jpg',
+        featureTitle: 'Efficiency and Scalability through Smart Operational Workflows',
+        featureDesc: 'Our automation services focus on removing friction from your business operations. We build systems that work for you, allowing your team to focus on strategic growth.',
+        bannerText: 'Automating for Operational Excellence',
+        quoteTitle: 'Unlock Significant Productivity with Custom Automation Solutions',
+        quoteText: 'Efficiency is not just about speed; it\'s about precision.',
+        quoteDesc: 'Custom automation allows you to scale your operations without scaling your overhead. We build solutions that are both flexible and powerful, ensuring your workflows evolve with your business.',
+        deliveryTitle: 'Our Automation Process',
+        deliverySteps: [
+            { id: '01', title: 'Process Discovery', icon: Search, desc: 'Identifying manual workflows suitable for high-impact automation.' },
+            { id: '02', title: 'Workflow Mapping', icon: Workflow, desc: 'Detailed documentation of existing processes and identifying bottlenecks.' },
+            { id: '03', title: 'Solution Design', icon: Zap, desc: 'Designing an automated architecture that streamlines operations.' },
+            { id: '04', title: 'Implementation', icon: Settings, desc: 'Building and integrating automated bots and intelligent workflows.' },
+            { id: '05', title: 'Integration & Testing', icon: ShieldCheck, desc: 'Ensuring seamless connectivity with existing enterprise systems.' },
+            { id: '06', title: 'Operational Launch', icon: Rocket, desc: 'Deploying automation solutions with carefully managed transition plans.' },
+            { id: '07', title: 'Performance Tracking', icon: BarChart3, desc: 'Monitoring efficiency gains and resource optimization metrics.' },
+            { id: '08', title: 'Continuous Refinement', icon: RefreshCcw, desc: 'Iteratively improving workflows based on operational data results.' },
+        ],
+        ctaTitle: 'Ready to Streamline Your Business Operations?',
+        ctaDesc: 'Discover how our intelligent automation experts can help you achieve more with less.'
+    },
+    'blockchain': {
+        title: 'Blockchain Development',
+        heroTitle: 'Blockchain Development',
+        heroDesc: 'Build secure, transparent, and decentralized systems. We provide expert blockchain solutions for finance, supply chain, and digital identity management.',
+        imageSrc: '/assets/services-page/blockchain.jpg',
+        featureImageSrc: '/assets/services-page/blockchain-2.jpg',
+        featureTitle: 'Transforming Industries with Secure Decentralized Technology',
+        featureDesc: 'Our blockchain services enable businesses to build trust through technology. We design and implement decentralized solutions that ensure data integrity and security.',
+        bannerText: 'Building Decentralized Trust',
+        quoteTitle: 'Secure Your Future with Transparent and Tamper-Proof Systems',
+        quoteText: 'Blockchain is the foundation for a more transparent digital economy.',
+        quoteDesc: 'We help organizations navigate the complexities of decentralized technology, focusing on security and scalability at every step. From smart contracts to tokenomics, we ensure your blockchain solution is enterprise-grade.',
+        deliveryTitle: 'Our Blockchain Process',
+        deliverySteps: [
+            { id: '01', title: 'Feasibility Study', icon: Search, desc: 'Determining the optimal blockchain architecture for your use case.' },
+            { id: '02', title: 'Network Selection', icon: Network, desc: 'Choosing between public, private, or consortium-style networks.' },
+            { id: '03', title: 'Smart Contract Design', icon: Code2, desc: 'Architecting secure and efficient self-executing digital agreements.' },
+            { id: '04', title: 'Core Development', icon: Database, desc: 'Building the fundamental protocol and dApp layers for your solution.' },
+            { id: '05', title: 'Security Auditing', icon: Lock, desc: 'Conducting in-depth code reviews and security testing of contracts.' },
+            { id: '06', title: 'Validation & Testing', icon: ShieldCheck, desc: 'Verifying decentralized logic across different network conditions.' },
+            { id: '07', title: 'Deployment & Launch', icon: Layers, desc: 'Strategic rollout onto selected mainnet or private blockchain environments.' },
+            { id: '08', title: 'Support & Scaling', icon: Activity, desc: 'Providing ongoing monitoring and protocol upgrades for high availability.' },
+        ],
+        ctaTitle: 'Ready to Build Secure Decentralized Solutions?',
+        ctaDesc: 'Consult with our blockchain experts to discover how decentralization can benefit your business.'
+    },
+    'devops': {
+        title: 'DevOps and Cloud',
+        heroTitle: 'DevOps and Cloud',
+        heroDesc: 'Accelerate your product delivery with high-performance DevOps. We help organizations build, scale, and secure their cloud infrastructure with modern automation.',
+        imageSrc: '/assets/services-page/devops.jpg',
+        featureImageSrc: '/assets/services-page/devops-2.jpg',
+        featureTitle: 'Building Resilient Infrastructures for Faster, Safer Delivery',
+        featureDesc: 'Our DevOps and cloud services focus on reliability and speed. We integrate security and automation into every stage of your development lifecycle.',
+        bannerText: 'Reliability and Continuous Innovation',
+        quoteTitle: 'Scale with Confidence Using Enterprise-Grade DevOps Practices',
+        quoteText: 'DevOps is not just a role; it\'s a culture of continuous delivery.',
+        quoteDesc: 'We help organizations transition from legacy deployment to modern, automated cloud environments. Our focus is on high availability, security, and developer productivity.',
+        deliveryTitle: 'Our DevOps Process',
+        deliverySteps: [
+            { id: '01', title: 'Infrastructure Audit', icon: Search, desc: 'Analyzing existing cloud environments and identifying optimization points.' },
+            { id: '02', title: 'Architecture Planning', icon: Settings, desc: 'Designing a scalable, secure, and cost-effective cloud infrastructure.' },
+            { id: '03', title: 'CI/CD Pipeline Setup', icon: Terminal, desc: 'Automating build, test, and deployment workflows for rapid delivery.' },
+            { id: '04', title: 'Containerization', icon: Container, desc: 'Packaging applications for consistency across development and production.' },
+            { id: '05', title: 'Security & Compliance', icon: ShieldCheck, desc: 'Integrating security protocols and compliance checks into the pipeline.' },
+            { id: '06', title: 'Cloud Provisioning', icon: Cloud, desc: 'Deploying infrastructure-as-code (IaC) for automated environment management.' },
+            { id: '07', title: 'Monitoring & Logging', icon: Activity, desc: 'Implementing real-time tracking for system health and performance.' },
+            { id: '08', title: 'Performance Optimization', icon: Zap, desc: 'Continuous refinement of system performance and cloud resource usage.' },
+        ],
+        ctaTitle: 'Ready to Accelerate Your Release Cycle?',
+        ctaDesc: 'Consult with our DevOps experts to optimize your infrastructure and delivery pipelines.'
+    },
+    'data-analytics': {
+        title: 'Data Analytics',
+        heroTitle: 'Data Analytics',
+        heroDesc: 'Transform your data into actionable insights. We help organisations build comprehensive analytic platforms that drive smarter business decisions.',
+        imageSrc: '/assets/services-page/data_analyst.webp',
+        featureImageSrc: '/assets/services-page/data_analyst-2.jpg',
+        featureTitle: 'Turning Raw Data into Strategic Business Value',
+        featureDesc: 'Our data analytics services help you uncover hidden trends and opportunities. We build robust pipelines that ensure your data is accurate, secure, and ready for analysis.',
+        bannerText: 'Empowering Data-Driven Growth',
+        quoteTitle: 'Optimise Your Business Strategy with Expert Data Analysis',
+        quoteText: 'In data we trust, but first, we must understand it.',
+        quoteDesc: 'We help organisations build a data-centric culture. From ingestion to high-quality visualization, we ensure your team has the insights they need to succeed.',
+        deliveryTitle: 'Our Data Process',
+        deliverySteps: [
+            { id: '01', title: 'Data Strategy', icon: Search, desc: 'Defining clear business objectives and identifying key data sources.' },
+            { id: '02', title: 'Data Ingestion', icon: Database, desc: 'Setting up automated pipelines to collect raw data from diverse sources.' },
+            { id: '03', title: 'ETL & Transformation', icon: Settings, desc: 'Cleaning and structuring data for high-performance analytic query execution.' },
+            { id: '04', title: 'Warehouse Design', icon: Database, desc: 'Architecting scalable cloud data warehouses for efficient storage.' },
+            { id: '05', title: 'Visualisation & BI', icon: PieChart, desc: 'Creating intuitive dashboards that provide real-time business visibility.' },
+            { id: '06', title: 'Security & Governance', icon: ShieldCheck, desc: 'Implementing robust data security and access control protocols.' },
+            { id: '07', title: 'Deep Analysis', icon: LineChart, desc: 'Applying advanced analytics to extract actionable business insights.' },
+            { id: '08', title: 'Continuous Insights', icon: Lightbulb, desc: 'Providing ongoing monitoring and refinement of analytical models.' },
+        ],
+        ctaTitle: 'Ready to become a Data-Driven Organisation?',
+        ctaDesc: 'Consult with our analysts to transform your data into a powerful business asset.'
+    },
+    'agile': {
+        title: 'Agile Project Delivery',
+        heroTitle: 'Agile Project Delivery',
+        heroDesc: 'Deliver high-quality products faster with agile expertise. We help organizations adopt collaborative development cultures that prioritize value and efficiency.',
+        imageSrc: '/assets/services-page/agile.jpg',
+        featureImageSrc: '/assets/services-page/agile-2.jpg',
+        featureTitle: 'Flexible and Collaborative Development for Modern Business',
+        featureDesc: 'Our agile services focus on transparency, efficiency, and continuous improvement. We help you build products that adapt to changing market requirements.',
+        bannerText: 'Efficiency and Collaborative Innovation',
+        quoteTitle: 'Drive Continuous Value with Expert Agile Methodologies',
+        quoteText: 'Agility is not just about speed; it\'s about adaptability.',
+        quoteDesc: 'We help organisations build high-performance delivery teams. Our focus is on fostering a collaborative culture that delivers consistent value to your users.',
+        deliveryTitle: 'Our Agile Process',
+        deliverySteps: [
+            { id: '01', title: 'Product Discovery', icon: Search, desc: 'Identifying core product goals and defining target user requirements.' },
+            { id: '02', title: 'Roadmap & Backlog', icon: Target, desc: 'Prioritising features and creating an initial project delivery roadmap.' },
+            { id: '03', title: 'Sprint Planning', icon: Users, desc: 'Defining specific goals and tasks for each iterative development cycle.' },
+            { id: '04', title: 'Iterative Development', icon: Zap, desc: 'Rapidly building and refining features in continuous logic cycles.' },
+            { id: '05', title: 'Daily Standups', icon: Activity, desc: 'Ensuring absolute alignment and resolving bottlenecks in real-time.' },
+            { id: '06', title: 'Testing & QA', icon: ShieldCheck, desc: 'Conducting continuous quality assurance within every sprint cycle.' },
+            { id: '07', title: 'Review & Retrospective', icon: RefreshCw, desc: 'Analyzing sprint performance and identifying improvement opportunities.' },
+            { id: '08', title: 'Release & Launch', icon: Rocket, desc: 'Deploying stable features into production while maintaining velocity.' },
+        ]
+,
+        ctaTitle: 'Ready to Accelerating Your Product Development?',
+        ctaDesc: 'Partner with our agile experts to build faster, smarter, and with better results.'
+    }
+};
