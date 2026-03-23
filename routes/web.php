@@ -23,6 +23,20 @@ Route::get('/services', function () {
     return Inertia::render('services');
 })->name('services');
 
+Route::get('/services/{slug}', function ($slug) {
+    return Inertia::render('services/show', [
+        'slug' => $slug
+    ]);
+});
+
+Route::get('/consulting', function () {
+    return Inertia::render('consulting');
+});
+
+Route::get('/how-we-can-help', function () {
+    return Inertia::render('how-we-can-help');
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
