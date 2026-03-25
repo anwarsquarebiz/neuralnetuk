@@ -1,20 +1,20 @@
-import MarketingLayout from '@/layouts/marketing-layout';
 import AboutHero from '@/components/about-hero';
 import AboutNeuralNet from '@/components/about-neuralnet';
-import VisionMission from '@/components/vision-mission';
-import ImpactSection from '@/components/impact-section';
-import CoreValues from '@/components/core-values';
-import CultureSection from '@/components/culture-section';
-import LeadershipSection from '@/components/leadership-section';
 import BrandTrustSection from '@/components/brand-trust';
+import CoreValues from '@/components/core-values';
 import CTASection from '@/components/cta-section';
+import CultureSection from '@/components/culture-section';
+import ImpactSection from '@/components/impact-section';
+import LeadershipSection from '@/components/leadership-section';
+import VisionMission from '@/components/vision-mission';
+import MarketingLayout from '@/layouts/marketing-layout';
 import { Head } from '@inertiajs/react';
 
 export default function About() {
     return (
         <MarketingLayout>
             <Head title="About Us - NeuralNet" />
-            
+
             {/* 1. Hero */}
             <AboutHero />
 

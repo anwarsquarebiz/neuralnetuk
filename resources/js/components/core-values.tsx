@@ -1,3 +1,6 @@
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
     Users, 
     Zap, 
@@ -6,6 +9,8 @@ import {
     Heart, 
     TrendingUp 
 } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const values = [
     {
@@ -53,9 +58,56 @@ const values = [
 ];
 
 export default function CoreValues() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const headerRef = useRef<HTMLDivElement>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(headerRef.current,
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: headerRef.current,
+                        start: 'top 95%',
+                        end: 'top 70%',
+                        scrub: 1,
+                    }
+                }
+            );
+
+            if (gridRef.current) {
+                gsap.fromTo(gridRef.current.children,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.1,
+                        scrollTrigger: {
+                            trigger: gridRef.current,
+                            start: 'top 90%',
+                            end: 'top 50%',
+                            scrub: 1,
+                        }
+                    }
+                );
+            }
+
+            ScrollTrigger.refresh();
+        }, sectionRef);
+
+        const timer = setTimeout(() => ScrollTrigger.refresh(), 500);
+        return () => {
+            ctx.revert();
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
-        <section className="py-24 bg-gray-50/30 font-sans">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16 px-4">
+        <section ref={sectionRef} className="py-24 bg-gray-50/30 font-sans overflow-hidden">
+            <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16 px-4">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1a3b] mb-4">
                     Our Core Values
                 </h2>
@@ -66,7 +118,7 @@ export default function CoreValues() {
             </div>
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {values.map((v, i) => (
                         <div key={i} className="group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-blue-600/5 hover:-translate-y-2 transition-all duration-500">
                             <div className={`size-14 ${v.bgColor} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500`}>

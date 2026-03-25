@@ -1,13 +1,38 @@
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 export default function AboutHero() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
+
+            tl.fromTo(textRef.current?.children || [],
+                { y: 30, opacity: 0 },
+                { y: 0, opacity: 1, stagger: 0.1, delay: 0.2 }
+            );
+
+            tl.fromTo(imageRef.current,
+                { scale: 0.9, opacity: 0, x: 50 },
+                { scale: 1, opacity: 1, x: 0 },
+                '-=0.7'
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="bg-[#f0f4ff] pt-32 pb-20 font-sans overflow-hidden">
+        <section ref={sectionRef} className="bg-[#f0f4ff] pt-32 pb-20 font-sans overflow-hidden">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left: Text Content */}
-                    <div className="space-y-8 text-center lg:text-left">
+                    <div ref={textRef} className="space-y-8 text-center lg:text-left">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0a1a3b] leading-[1.1]">
                             Driving Innovation Through AI & Digital Technology
                         </h1>
@@ -22,7 +47,7 @@ export default function AboutHero() {
                     </div>
 
                     {/* Right: Illustration/Image Mockup */}
-                    <div className="relative group">
+                    <div ref={imageRef} className="relative group">
                         <div className="absolute -inset-4 bg-blue-600/5 rounded-[2rem] blur-2xl group-hover:bg-blue-600/10 transition-all duration-700"></div>
                         <div className="relative bg-white p-4 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white/50 overflow-hidden transform group-hover:scale-[1.02] transition-all duration-700">
                             {/* Dashboard/Code Mockup Placeholder */}

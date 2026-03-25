@@ -1,3 +1,5 @@
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { cn } from '@/lib/utils';
 
 const brands = [
@@ -13,21 +15,45 @@ const brands = [
 ];
 
 export default function ContactHero() {
+  const containerRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 } });
+      
+      tl.fromTo([titleRef.current, textRef.current], 
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.2, delay: 0.2 }
+      );
+
+      tl.fromTo(marqueeRef.current,
+        { scale: 0.95, opacity: 0 },
+        { scale: 1, opacity: 1 },
+        '-=0.4'
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   // Double the brands for seamless loop
   const displayBrands = [...brands, ...brands];
 
   return (
-    <section className="bg-[#f0f4ff] pt-32 pb-0 font-sans overflow-hidden">
+    <section ref={containerRef} className="bg-[#f0f4ff] pt-32 pb-0 font-sans overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a1a3b] mb-6 leading-tight max-w-4xl mx-auto">
+        <h1 ref={titleRef} className="text-4xl md:text-5xl font-extrabold text-[#0a1a3b] mb-6 leading-tight max-w-4xl mx-auto">
           Let&apos;s Navigate Digital Transformation Together!!!
         </h1>
-        <p className="text-[#4a5568] text-lg max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p ref={textRef} className="text-[#4a5568] text-lg max-w-3xl mx-auto mb-12 leading-relaxed">
           Everything is Possible with the Right Strategy and the Right Team. We&apos;re here to help you solve your business challenges and drive meaningful results.
         </p>
 
         {/* Scrolling Logo Marquee */}
-        <div className="relative w-full overflow-hidden pb-10 ">
+        <div ref={marqueeRef} className="relative w-full overflow-hidden pb-10 ">
           <div className="flex animate-marquee gap-8 md:gap-12 w-max">
             {displayBrands.map((brand, i) => (
               <div 

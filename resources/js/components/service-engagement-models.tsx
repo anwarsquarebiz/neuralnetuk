@@ -9,6 +9,12 @@ import {
     Check
 } from 'lucide-react';
 
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 interface EngagementModel {
     title: string;
     icon: any;
@@ -52,10 +58,57 @@ export default function ServiceEngagementModels({
     serviceName, 
     models = defaultModels 
 }: ServiceEngagementModelsProps) {
+    const sectionRef = useRef<HTMLElement>(null);
+    const headerRef = useRef<HTMLDivElement>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(headerRef.current,
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: headerRef.current,
+                        start: 'top 95%',
+                        end: 'top 70%',
+                        scrub: 1,
+                    }
+                }
+            );
+
+            if (gridRef.current) {
+                gsap.fromTo(gridRef.current.children,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.1,
+                        scrollTrigger: {
+                            trigger: gridRef.current,
+                            start: 'top 90%',
+                            end: 'top 50%',
+                            scrub: 1,
+                        }
+                    }
+                );
+            }
+
+            ScrollTrigger.refresh();
+        }, sectionRef);
+
+        const timer = setTimeout(() => ScrollTrigger.refresh(), 500);
+        return () => {
+            ctx.revert();
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
-        <section className="py-24 bg-[#eef4ff] font-sans">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
+        <section ref={sectionRef} className="py-24 bg-[#eef4ff] font-sans">
+            <div ref={headerRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center mb-16">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 break-words">
                     Flexible Engagement Models for {serviceName}
                 </h2>
                 <p className="text-gray-600 max-w-4xl mx-auto font-medium leading-relaxed">
@@ -64,7 +117,7 @@ export default function ServiceEngagementModels({
             </div>
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {models.map((model, i) => (
                         <div key={i} className="bg-white rounded-2xl p-8 shadow-sm flex flex-col h-full border border-gray-100 hover:shadow-xl transition-all">
                             <div className="size-12 bg-blue-50 rounded-xl flex items-center justify-center mb-8 shrink-0">

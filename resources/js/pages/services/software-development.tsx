@@ -40,13 +40,13 @@ export default function SoftwareDevelopment() {
             <ServiceHero 
                 title="Web Application Development"
                 description="Working on complicated web applications with ease requires expertise and experience. Our team of software developers will help you from design to deployment."
-                imageSrc="/assets/services-page/software-dev-image.jpg"
+                imageSrc="/assets/services-page/software-dev-image.webp"
             />
 
             <ServiceFeatureSection 
                 title="Modern Web Application Development For Scalable Digital Platforms"
                 description="Scalable solutions for modern business require a deep understanding of distributed systems and user-centric design. We build platforms that not only meet today's demands but are engineered for tomorrow's growth."
-                imageSrc='/assets/services-page/software-dev-image-2.jpg'
+                imageSrc='/assets/services-page/software-dev-image-2.webp'
             />
 
             <FullWidthBanner text="Trusted Technology Expertise" />
