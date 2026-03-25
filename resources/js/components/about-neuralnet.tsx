@@ -1,36 +1,88 @@
 import { Button } from '@/components/ui/button';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect, useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutNeuralNet() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                imageRef.current,
+                { x: -50, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 90%',
+                        end: 'top 40%',
+                        scrub: 1,
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                textRef.current,
+                { x: 50, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 90%',
+                        end: 'top 40%',
+                        scrub: 1,
+                    },
+                },
+            );
+
+            ScrollTrigger.refresh();
+        }, sectionRef);
+
+        const timer = setTimeout(() => ScrollTrigger.refresh(), 500);
+        return () => {
+            ctx.revert();
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
-        <section className="py-24 bg-white font-sans overflow-hidden">
+        <section ref={sectionRef} className="overflow-hidden bg-white py-24 font-sans">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className="relative group order-2 lg:order-1">
-                        <div className="absolute -inset-4 bg-blue-600/5 rounded-[2.5rem] blur-2xl group-hover:bg-blue-600/10 transition-all duration-700"></div>
-                        <div className="relative aspect-[4/3] bg-gray-100 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/50 group-hover:scale-[1.02] transition-all duration-700">
-                            <img 
-                                src="/assets/about-us/about section image.jpg" 
-                                alt="About NeuralNet" 
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+                    <div ref={imageRef} className="group relative order-2 lg:order-1">
+                        <div className="absolute -inset-4 rounded-[2.5rem] bg-blue-600/5 blur-2xl transition-all duration-700 group-hover:bg-blue-600/10"></div>
+                        <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] border border-white/50 bg-gray-100 shadow-2xl transition-all duration-700 group-hover:scale-[1.02]">
+                            <img
+                                src="/assets/about-us/about section image.webp"
+                                alt="About NeuralNet"
+                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 loading="lazy"
                             />
                         </div>
                     </div>
 
                     {/* Right: Text Content */}
-                    <div className="space-y-8 order-1 lg:order-2">
+                    <div ref={textRef} className="order-1 space-y-8 lg:order-2">
                         <div>
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1a3b] mb-6">
-                                About NeuralNet
-                            </h2>
-                            <p className="text-[#4a5568] text-lg leading-relaxed mb-6">
-                                NeuralNet is a UK-based IT consulting and software development company focused on delivering high-quality solutions on time and within budget. We specialize in AI-driven digital transformation for enterprise clients worldwide.
+                            <h2 className="mb-6 text-3xl font-extrabold text-[#0a1a3b] md:text-4xl">About NeuralNet</h2>
+                            <p className="mb-6 text-lg leading-relaxed text-[#4a5568]">
+                                NeuralNet is a UK-based IT consulting and software development company focused on delivering high-quality solutions on
+                                time and within budget. We specialize in AI-driven digital transformation for enterprise clients worldwide.
                             </p>
-                            <p className="text-[#4a5568] text-lg leading-relaxed">
-                                Our mission is to empower businesses with the latest technologies and strategic insights they need to thrive in the digital age. With a team of world-class engineers and strategists, we turn complex challenges into competitive advantages.
+                            <p className="text-lg leading-relaxed text-[#4a5568]">
+                                Our mission is to empower businesses with the latest technologies and strategic insights they need to thrive in the
+                                digital age. With a team of world-class engineers and strategists, we turn complex challenges into competitive
+                                advantages.
                             </p>
                         </div>
-                        <Button className="h-12 px-8 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-200">
+                        <Button className="h-12 rounded-xl bg-blue-600 px-8 font-bold text-white shadow-lg shadow-blue-200 hover:bg-blue-700">
                             Join our team
                         </Button>
                     </div>

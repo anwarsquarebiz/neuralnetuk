@@ -2,20 +2,8 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { Link } from '@inertiajs/react';
-import {
-    Menu,
-    ChevronDown,
-    ChevronRight,
-    Code2,
-    Cpu,
-    FileText,
-    Zap,
-    Database,
-    RefreshCcw,
-    LineChart,
-    Activity
-} from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
+import { Activity, ChevronDown, ChevronRight, Code2, Cpu, Database, FileText, LineChart, Menu, RefreshCcw, Zap } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import NeuralIcon from './neural-icon';
 
 const navLinks = [
@@ -26,7 +14,13 @@ const navLinks = [
 ];
 
 const services = [
-    { title: 'Software Development', icon: Code2, color: 'text-blue-500', desc: 'Scalable solutions for modern business.', slug: 'software-development' },
+    {
+        title: 'Software Development',
+        icon: Code2,
+        color: 'text-blue-500',
+        desc: 'Scalable solutions for modern business.',
+        slug: 'software-development',
+    },
     { title: 'ML and AI', icon: Cpu, color: 'text-purple-500', desc: 'Intelligent automation and insights.', slug: 'ml-and-ai' },
     { title: 'Content', icon: FileText, color: 'text-orange-500', desc: 'Strategic brand communication.', slug: 'content' },
     { title: 'Automation', icon: Zap, color: 'text-green-500', desc: 'Efficiency through smart workflows.', slug: 'automation' },
@@ -59,42 +53,42 @@ export default function Navbar({ transparent = false }: NavbarProps) {
         <nav
             className={cn(
                 'fixed top-0 left-0 z-50 w-full transition-all duration-300',
-                isScrolled ? 'bg-white backdrop-blur-md border-b text-foreground' : 'bg-transparent',
+                isScrolled ? 'text-foreground border-b bg-white backdrop-blur-md' : 'bg-transparent',
             )}
             onMouseLeave={() => setIsMegaMenuOpen(false)}
         >
             <div className="mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 outline-none">
-                    <NeuralIcon className={cn("size-8", isTransparentAtTop ? "text-blue-400" : "text-blue-500")} />
-                    <span className={cn("text-xl font-bold tracking-tight", isTransparentAtTop ? "text-white" : "text-foreground")}>NeuralNet</span>
+                    <NeuralIcon className={cn('size-8', isTransparentAtTop ? 'text-blue-400' : 'text-blue-500')} />
+                    <span className={cn('text-xl font-bold tracking-tight', isTransparentAtTop ? 'text-white' : 'text-foreground')}>NeuralNet</span>
                 </Link>
 
                 {/* Desktop Nav */}
                 <div className="hidden items-center gap-8 lg:flex">
                     {navLinks.map((link) => (
-                        <div 
+                        <div
                             key={link.title}
                             className="relative py-8"
-                            onMouseEnter={() => link.hasMegaMenu ? setIsMegaMenuOpen(true) : setIsMegaMenuOpen(false)}
+                            onMouseEnter={() => (link.hasMegaMenu ? setIsMegaMenuOpen(true) : setIsMegaMenuOpen(false))}
                         >
                             {link.hasMegaMenu ? (
                                 <button
                                     onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
                                     className={cn(
-                                        "text-sm font-medium transition-colors flex items-center gap-1 hover:text-blue-500 bg-transparent border-none cursor-pointer outline-none",
-                                        isTransparentAtTop ? "text-white/90" : "text-foreground/80"
+                                        'flex cursor-pointer items-center gap-1 border-none bg-transparent text-sm font-medium transition-colors outline-none hover:text-blue-500',
+                                        isTransparentAtTop ? 'text-white/90' : 'text-foreground/80',
                                     )}
                                 >
                                     {link.title}
-                                    <ChevronDown className={cn("size-3.5 transition-transform", isMegaMenuOpen && "rotate-180")} />
+                                    <ChevronDown className={cn('size-3.5 transition-transform', isMegaMenuOpen && 'rotate-180')} />
                                 </button>
                             ) : (
                                 <Link
                                     href={link.href}
                                     className={cn(
-                                        "text-sm font-medium transition-colors flex items-center gap-1 hover:text-blue-500",
-                                        isTransparentAtTop ? "text-white/90" : "text-foreground/80"
+                                        'flex items-center gap-1 text-sm font-medium transition-colors hover:text-blue-500',
+                                        isTransparentAtTop ? 'text-white/90' : 'text-foreground/80',
                                     )}
                                 >
                                     {link.title}
@@ -102,7 +96,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                             )}
                         </div>
                     ))}
-                    <Button asChild className="ml-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg h-auto py-2 text-sm">
+                    <Button asChild className="ml-4 h-auto rounded-lg bg-blue-600 py-2 text-sm text-white shadow-lg hover:bg-blue-700">
                         <Link href="/contact">Talk To An Expert</Link>
                     </Button>
                 </div>
@@ -111,16 +105,16 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                 <div className="lg:hidden">
                     <Sheet>
                         <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon" className={isTransparentAtTop ? "text-white" : "text-foreground"}>
+                            <Button variant="ghost" size="icon" className={isTransparentAtTop ? 'text-white' : 'text-foreground'}>
                                 <Menu className="size-6" />
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="w-[300px] bg-background p-0">
-                            <div className="flex flex-col h-full py-10 px-6">
+                        <SheetContent side="right" className="bg-background w-[300px] p-0">
+                            <div className="flex h-full flex-col px-6 py-10">
                                 <SheetTitle className="mb-8">
                                     <Link href="/" className="flex items-center gap-2">
                                         <NeuralIcon className="size-8 text-blue-500" />
-                                        <span className="text-xl font-bold tracking-tight text-foreground">NeuralNet</span>
+                                        <span className="text-foreground text-xl font-bold tracking-tight">NeuralNet</span>
                                     </Link>
                                 </SheetTitle>
                                 <div className="flex flex-col gap-6">
@@ -128,20 +122,20 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                                         <div key={link.title} className="flex flex-col gap-4">
                                             {link.hasMegaMenu ? (
                                                 <>
-                                                    <button 
+                                                    <button
                                                         onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
-                                                        className="text-lg font-medium text-foreground/80 transition-colors hover:text-blue-500 flex items-center justify-between w-full bg-transparent border-none text-left"
+                                                        className="text-foreground/80 flex w-full items-center justify-between border-none bg-transparent text-left text-lg font-medium transition-colors hover:text-blue-500"
                                                     >
                                                         {link.title}
-                                                        <ChevronDown className={cn("size-4 transition-transform", isMegaMenuOpen && "rotate-180")} />
+                                                        <ChevronDown className={cn('size-4 transition-transform', isMegaMenuOpen && 'rotate-180')} />
                                                     </button>
                                                     {isMegaMenuOpen && (
-                                                        <div className="flex flex-col gap-3 pl-4 border-l-2 border-blue-500 ml-1">
+                                                        <div className="ml-1 flex flex-col gap-3 border-l-2 border-blue-500 pl-4">
                                                             {services.map((service, i) => (
-                                                                <Link 
-                                                                    key={i} 
+                                                                <Link
+                                                                    key={i}
                                                                     href={`/services/${service.slug}`}
-                                                                    className="text-sm font-medium text-foreground/60 hover:text-blue-500 transition-colors"
+                                                                    className="text-foreground/60 text-sm font-medium transition-colors hover:text-blue-500"
                                                                 >
                                                                     {service.title}
                                                                 </Link>
@@ -152,14 +146,17 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                                             ) : (
                                                 <Link
                                                     href={link.href}
-                                                    className="text-lg font-medium text-foreground/80 transition-colors hover:text-blue-500"
+                                                    className="text-foreground/80 text-lg font-medium transition-colors hover:text-blue-500"
                                                 >
                                                     {link.title}
                                                 </Link>
                                             )}
                                         </div>
                                     ))}
-                                    <Button asChild className="mt-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg w-full py-3 h-auto text-sm">
+                                    <Button
+                                        asChild
+                                        className="mt-4 h-auto w-full rounded-lg bg-blue-600 py-3 text-sm text-white shadow-lg hover:bg-blue-700"
+                                    >
                                         <Link href="/contact">Talk To An Expert</Link>
                                     </Button>
                                 </div>
@@ -170,50 +167,60 @@ export default function Navbar({ transparent = false }: NavbarProps) {
             </div>
 
             {/* Mega Menu Dropdown */}
-            <div 
+            <div
                 className={cn(
-                    "absolute left-0 top-20 w-full bg-white border-b shadow-2xl transition-all duration-300 ease-in-out overflow-hidden z-40",
-                    isMegaMenuOpen ? "max-h-[600px] opacity-100 visible" : "max-h-0 opacity-0 invisible"
+                    'absolute top-20 left-0 z-40 w-full overflow-hidden border-b bg-white shadow-2xl transition-all duration-300 ease-in-out',
+                    isMegaMenuOpen ? 'visible max-h-[600px] opacity-100' : 'invisible max-h-0 opacity-0',
                 )}
                 onMouseEnter={() => setIsMegaMenuOpen(true)}
             >
-                <div className="mx-auto px-4 sm:px-6 lg:px-8 flex min-h-[200px]">
+                <div className="mx-auto flex min-h-[200px] px-4 sm:px-6 lg:px-8">
                     {/* Left Sidebar */}
-                    <div className="w-1/4 bg-blue-600 p-10 text-white flex flex-col justify-between relative overflow-hidden">
-                         {/* Minimalist background accent */}
-                        <div className="absolute top-0 right-0 opacity-10 pointer-events-none translate-x-1/2 -translate-y-1/2">
-                            <div className="w-[300px] h-[300px] border-[20px] border-white rounded-full"></div>
+                    <div className="relative flex w-1/4 flex-col justify-between overflow-hidden bg-blue-600 p-10 text-white">
+                        {/* Minimalist background accent */}
+                        <div className="pointer-events-none absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 opacity-10">
+                            <div className="h-[300px] w-[300px] rounded-full border-[20px] border-white"></div>
                         </div>
 
                         <div className="relative z-10">
-                            <h3 className="text-3xl font-extrabold mb-4">Service</h3>
-                            <p className="text-blue-100 text-sm font-medium leading-relaxed">
+                            <h3 className="mb-4 text-3xl font-extrabold">Service</h3>
+                            <p className="text-sm leading-relaxed font-medium text-blue-100">
                                 Our Portfolio Of Services Range From Designing Strategy To Delivering Impact.
                             </p>
                         </div>
 
-                        <Button asChild className="bg-white text-blue-600 hover:bg-gray-100 rounded-md py-3 px-6 h-auto text-sm font-bold w-full relative z-10">
+                        <Button
+                            asChild
+                            className="relative z-10 h-auto w-full rounded-md bg-white px-6 py-3 text-sm font-bold text-blue-600 hover:bg-gray-100"
+                        >
                             <Link href="/contact">Hire Now</Link>
                         </Button>
                     </div>
 
                     {/* Right Content Area */}
-                    <div className="flex-1 p-8 grid grid-cols-2 gap-3 bg-white">
+                    <div className="grid flex-1 grid-cols-2 gap-3 bg-white p-8">
                         {services.map((service, i) => (
-                            <Link 
-                                key={i} 
+                            <Link
+                                key={i}
                                 href={`/services/${service.slug}`}
-                                className="group flex items-center gap-4 p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                                className="group flex items-center gap-4 rounded-lg p-2 transition-colors hover:bg-gray-50"
                             >
-                                <div className={cn("size-10 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0 group-hover:bg-white transition-colors border border-transparent group-hover:border-gray-100", service.color)}>
+                                <div
+                                    className={cn(
+                                        'flex size-10 flex-shrink-0 items-center justify-center rounded-lg border border-transparent bg-gray-50 transition-colors group-hover:border-gray-100 group-hover:bg-white',
+                                        service.color,
+                                    )}
+                                >
                                     <service.icon className="size-5" />
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-1">
-                                        <h4 className="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{service.title}</h4>
-                                        <ChevronRight className="size-3 text-blue-600 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                                        <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-blue-600">
+                                            {service.title}
+                                        </h4>
+                                        <ChevronRight className="size-3 -translate-x-2 text-blue-600 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
                                     </div>
-                                    <p className="text-xs text-gray-500 mt-1">{service.desc}</p>
+                                    <p className="mt-1 text-xs text-gray-500">{service.desc}</p>
                                 </div>
                             </Link>
                         ))}

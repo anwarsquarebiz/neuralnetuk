@@ -1,4 +1,9 @@
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '@/lib/utils';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ServiceFeatureSectionProps {
     title: string;
@@ -13,15 +18,59 @@ export default function ServiceFeatureSection({
     imageSrc, 
     imageOnLeft = true 
 }: ServiceFeatureSectionProps) {
+    const sectionRef = useRef<HTMLElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(contentRef.current,
+                { x: imageOnLeft ? 50 : -50, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 90%',
+                        end: 'top 30%',
+                        scrub: 1,
+                    }
+                }
+            );
+
+            gsap.fromTo(imageRef.current,
+                { x: imageOnLeft ? -50 : 50, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 90%',
+                        end: 'top 30%',
+                        scrub: 1,
+                    }
+                }
+            );
+
+            ScrollTrigger.refresh();
+        }, sectionRef);
+
+        const timer = setTimeout(() => ScrollTrigger.refresh(), 500);
+        return () => {
+            ctx.revert();
+            clearTimeout(timer);
+        };
+    }, [imageOnLeft]);
+
     return (
-        <section className="py-24 bg-white font-sans overflow-hidden">
+        <section ref={sectionRef} className="py-24 bg-white font-sans overflow-hidden">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className={cn(
                     "flex flex-col items-center gap-16 lg:gap-24",
                     imageOnLeft ? "lg:flex-row" : "lg:flex-row-reverse"
                 )}>
                     {/* Image Area */}
-                    <div className="flex-1 w-full relative">
+                    <div ref={imageRef} className="flex-1 w-full relative">
                         {imageSrc ? (
                             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-2 overflow-hidden">
                                 <img src={imageSrc} alt={title} className="w-full h-auto rounded-xl" loading="lazy" />
@@ -38,7 +87,7 @@ export default function ServiceFeatureSection({
                     </div>
 
                     {/* Content Area */}
-                    <div className="flex-1 text-left">
+                    <div ref={contentRef} className="flex-1 text-left">
                         <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1a3b] leading-tight mb-8">
                             {title}
                         </h2>

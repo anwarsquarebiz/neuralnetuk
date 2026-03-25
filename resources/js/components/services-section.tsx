@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect, useRef } from 'react';
 import { 
     Code2, 
     Cpu, 
@@ -13,11 +16,64 @@ import {
     Activity
 } from 'lucide-react';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function ServicesSection() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const headerRef = useRef<HTMLDivElement>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(headerRef.current,
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: headerRef.current,
+                        start: 'top 95%',
+                        end: 'top 70%',
+                        scrub: 1,
+                    },
+                }
+            );
+
+            if (gridRef.current) {
+                gsap.fromTo(gridRef.current.children,
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.1,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: gridRef.current,
+                            start: 'top 90%',
+                            end: 'top 50%',
+                            scrub: 1,
+                        },
+                    }
+                );
+            }
+            
+            ScrollTrigger.refresh();
+        }, sectionRef);
+
+        const timer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 500);
+
+        return () => {
+            ctx.revert();
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
-        <section className="font-sans w-full py-20 flex items-center justify-center">
+        <section ref={sectionRef} className="font-sans w-full py-20 flex items-center justify-center">
             <div className='bg-gray-100 w-full md:w-[90%] lg:w-[80%] py-20'>
-                <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16 px-4">
+                <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
                 <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Our Services</h2>
                 <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     We offer comprehensive services to develop digital solutions & manage complete product lifecycle. 
@@ -27,7 +83,7 @@ export default function ServicesSection() {
             </div>
 
             <div className="mx-auto max-w-7xl px-6 lg:px-16 ">
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
                     {[
                         { title: 'Software Development', icon: Code2, color: 'text-blue-500', slug: 'software-development' },
                         { title: 'ML and AI', icon: Cpu, color: 'text-purple-500', slug: 'ml-and-ai' },

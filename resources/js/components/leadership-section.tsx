@@ -1,3 +1,9 @@
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect, useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
+
 const leaders = [
     { name: 'Sanjay Juneja', role: 'CRO', src: '/assets/about-us/team/first.png' },
     { name: 'Anubhav Chaturvedi', role: 'CTO', src: '/assets/about-us/team/second.png' },
@@ -6,39 +12,81 @@ const leaders = [
 ];
 
 export default function LeadershipSection() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const headerRef = useRef<HTMLDivElement>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                headerRef.current,
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: headerRef.current,
+                        start: 'top 95%',
+                        end: 'top 70%',
+                        scrub: 1,
+                    },
+                },
+            );
+
+            if (gridRef.current) {
+                gsap.fromTo(
+                    gridRef.current.children,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.1,
+                        scrollTrigger: {
+                            trigger: gridRef.current,
+                            start: 'top 90%',
+                            end: 'top 50%',
+                            scrub: 1,
+                        },
+                    },
+                );
+            }
+
+            ScrollTrigger.refresh();
+        }, sectionRef);
+
+        const timer = setTimeout(() => ScrollTrigger.refresh(), 500);
+        return () => {
+            ctx.revert();
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
-        <section className="py-24 bg-white font-sans overflow-hidden">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-20">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-black mb-6">
-                    Our Leadership
-                </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed text-sm md:text-base px-4">
-                    The outlook, passion and experience of our leaders guides Sapphire. They have a relentless passion to offer the highest levels of innovation and service excellence.
+        <section ref={sectionRef} className="overflow-hidden bg-white py-24 font-sans">
+            <div ref={headerRef} className="mx-auto mb-20 max-w-7xl px-6 text-center lg:px-8">
+                <h2 className="mb-6 text-3xl font-extrabold text-black md:text-4xl">Our Leadership</h2>
+                <p className="mx-auto max-w-3xl px-4 text-sm leading-relaxed text-gray-600 md:text-base">
+                    The outlook, passion and experience of our leaders guides Sapphire. They have a relentless passion to offer the highest levels of
+                    innovation and service excellence.
                 </p>
             </div>
 
             <div className="mx-auto max-w-6xl px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-12 sm:gap-y-16">
+                <div ref={gridRef} className="grid grid-cols-1 gap-x-12 gap-y-12 sm:gap-y-16 lg:grid-cols-2 lg:gap-x-16">
                     {leaders.map((leader, i) => (
-                        <div key={i} className="flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-6 sm:gap-10 group max-w-2xl mx-auto lg:mx-0">
+                        <div
+                            key={i}
+                            className="group mx-auto flex max-w-2xl flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:gap-10 sm:text-left lg:mx-0"
+                        >
                             {/* Left: Image Container */}
-                            <div className="w-full max-w-[200px] sm:max-w-[240px] aspect-square bg-[#C4C4C4] rounded-[2rem] overflow-hidden relative flex-shrink-0 shadow-sm transition-transform duration-500 group-hover:scale-[1.02]">
-                                <img 
-                                    src={leader.src} 
-                                    alt={leader.name} 
-                                    className="w-full h-full object-cover"
-                                    loading="lazy"
-                                />
+                            <div className="relative aspect-square w-full max-w-[200px] flex-shrink-0 overflow-hidden rounded-[2rem] bg-[#C4C4C4] shadow-sm transition-transform duration-500 group-hover:scale-[1.02] sm:max-w-[240px]">
+                                <img src={leader.src} alt={leader.name} className="h-full w-full object-cover" loading="lazy" />
                             </div>
-                            
+
                             {/* Right: Info */}
-                            <div className="flex flex-col justify-center flex-1 min-w-0">
-                                <h3 className="text-2xl md:text-3xl font-bold text-black mb-2 whitespace-normal leading-tight">
-                                    {leader.name}
-                                </h3>
-                                <p className="text-lg md:text-xl font-bold text-blue-600 uppercase tracking-tight">
-                                    {leader.role}
-                                </p>
+                            <div className="flex min-w-0 flex-1 flex-col justify-center">
+                                <h3 className="mb-2 text-2xl leading-tight font-bold whitespace-normal text-black md:text-3xl">{leader.name}</h3>
+                                <p className="text-lg font-bold tracking-tight text-blue-600 uppercase md:text-xl">{leader.role}</p>
                             </div>
                         </div>
                     ))}

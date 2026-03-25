@@ -1,3 +1,7 @@
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect, useRef } from 'react';
+
 const brands = [
     { name: 'Alembic', src: '/assets/brands/alembic_logo.svg' },
     { name: 'Almarai', src: '/assets/brands/almarai_corporate_logo.png' },
@@ -25,10 +29,65 @@ const brands = [
     { name: 'Toyota', src: '/assets/brands/toyota_logo.webp' },
 ];
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function BrandTrustSection() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const headerRef = useRef<HTMLDivElement>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            // Header animation
+            gsap.fromTo(headerRef.current, 
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: headerRef.current,
+                        start: 'top 95%',
+                        end: 'top 70%',
+                        scrub: 1,
+                    },
+                }
+            );
+
+            if (gridRef.current) {
+                gsap.fromTo(gridRef.current.children, 
+                    { y: 30, opacity: 0, scale: 0.9 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        stagger: 0.05,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: gridRef.current,
+                            start: 'top 90%',
+                            end: 'top 60%',
+                            scrub: 1,
+                        },
+                    }
+                );
+            }
+
+            ScrollTrigger.refresh();
+        }, sectionRef);
+
+        const timer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 500);
+
+        return () => {
+            ctx.revert();
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
-        <section className="py-24 bg-white font-sans">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
+        <section ref={sectionRef} className="py-24 bg-white font-sans">
+            <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
                 <h2 className="text-3xl font-extrabold text-gray-900 mb-6 font-sans">Trusted By The World&apos;s Leading Brands</h2>
                 <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     We are glad to be a digital technology and innovation partner with world&apos;s leading brands. Building greater futures through innovation and collective knowledge.
@@ -36,7 +95,7 @@ export default function BrandTrustSection() {
             </div>
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                     {brands.map((brand, i) => (
                         <div key={i} className="aspect-[16/9] bg-white border border-gray-100 rounded-xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)] flex items-center justify-center p-6 grayscale hover:grayscale-0 transition-all group overflow-hidden">
                             <img 
