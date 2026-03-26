@@ -73,7 +73,10 @@ export default function ImpactSection() {
             {/* Background Image Overlay */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-[#050B20]/20 z-10"></div>
-                <div className="absolute inset-0 bg-[url('/assets/contact-mid-image.webp')] bg-cover bg-center brightness-[0.15]"></div>
+                <div
+                    className="absolute inset-0 bg-cover bg-center brightness-[0.15]"
+                    style={{ backgroundImage: "url('/assets/contact-mid-image.webp')" }}
+                ></div>
             </div>
 
             <div ref={headerRef} className="relative z-20 mx-auto mb-10 md:mb-16 max-w-7xl px-6 lg:px-8 text-center">
