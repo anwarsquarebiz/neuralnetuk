@@ -43,7 +43,7 @@ export default function ContactHero() {
   const displayBrands = [...brands, ...brands];
 
   return (
-    <section ref={containerRef} className="bg-[#f0f4ff] pt-32 pb-0 font-sans overflow-hidden">
+    <section ref={containerRef} className="bg-[#f0f4ff] pt-24 pb-0 md:pt-32 font-sans overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
         <h1 ref={titleRef} className="text-4xl md:text-5xl font-extrabold text-[#0a1a3b] mb-6 leading-tight max-w-4xl mx-auto">
           Let&apos;s Navigate Digital Transformation Together!!!
@@ -62,12 +62,16 @@ export default function ContactHero() {
                   "h-16 md:h-20 w-40 md:w-56 flex-shrink-0 rounded-2xl flex items-center justify-center border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-white transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group px-6",
                 )}
               >
-                <img 
-                  src={brand.logo} 
-                  alt={brand.name} 
-                  className="max-h-[60%] max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" 
-                  loading="lazy"
-                />
+                <picture className="flex items-center justify-center w-full h-full">
+                  <source srcSet={brand.logo} type={brand.logo.endsWith('.webp') ? 'image/webp' : brand.logo.endsWith('.svg') ? 'image/svg+xml' : 'image/png'} />
+                  <img 
+                    src={brand.logo} 
+                    alt={brand.name} 
+                    className="max-h-[60%] max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 select-none pointer-events-none" 
+                    style={{ transform: 'translateZ(0)' }}
+                    loading="lazy"
+                  />
+                </picture>
               </div>
             ))}
           </div>

@@ -69,14 +69,14 @@ export default function ImpactSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative py-24 bg-gray-900 text-white font-sans overflow-hidden">
+        <section ref={sectionRef} className="relative py-12 md:py-24 bg-gray-900 text-white font-sans overflow-hidden">
             {/* Background Image Overlay */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-[#050B20]/20 z-10"></div>
                 <div className="absolute inset-0 bg-[url('/assets/contact-mid-image.webp')] bg-cover bg-center brightness-[0.15]"></div>
             </div>
 
-            <div ref={headerRef} className="relative z-20 mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
+            <div ref={headerRef} className="relative z-20 mx-auto mb-10 md:mb-16 max-w-7xl px-6 lg:px-8 text-center">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 break-words">Our Impact and Global Presence</h2>
                 <div className="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-12"></div>
             </div>

@@ -106,8 +106,8 @@ export default function CoreValues() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-gray-50/30 font-sans overflow-hidden">
-            <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16 px-4">
+        <section ref={sectionRef} className="py-12 md:py-24 bg-gray-50/30 font-sans overflow-hidden">
+            <div ref={headerRef} className="mx-auto max-w-7xl lg:px-8 text-center mb-10 md:mb-16 px-6">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1a3b] mb-4">
                     Our Core Values
                 </h2>

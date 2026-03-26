@@ -29,7 +29,7 @@ export default function ServiceHero({ title, description, imageSrc, buttonText =
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative w-full overflow-hidden bg-[#f0f4ff] pt-32 pb-20 font-sans">
+        <section ref={sectionRef} className="relative w-full overflow-hidden bg-[#f0f4ff] pt-24 pb-12 md:pt-32 md:pb-20 font-sans">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center justify-between gap-12 lg:flex-row">
                     {/* Left Content */}
@@ -51,8 +51,17 @@ export default function ServiceHero({ title, description, imageSrc, buttonText =
                     {/* Right Image/Placeholder */}
                     <div ref={imageRef} className="relative w-full flex-1 lg:max-w-[600px]">
                         {imageSrc ? (
-                            <div className="relative overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
-                                <img src={imageSrc} alt={title} className="aspect-video w-full object-cover" loading="lazy" />
+                            <div className="relative overflow-hidden rounded-2xl border-4 border-white shadow-2xl aspect-video">
+                                <picture>
+                                    <source srcSet={imageSrc} type="image/webp" />
+                                    <img 
+                                        src={imageSrc} 
+                                        alt={title} 
+                                        className="w-full h-full object-cover select-none pointer-events-none" 
+                                        style={{ transform: 'translateZ(0)' }}
+                                        loading="eager" 
+                                    />
+                                </picture>
                             </div>
                         ) : (
                             <div className="flex aspect-video w-full items-center justify-center overflow-hidden rounded-2xl border-4 border-white bg-[#0a1a3b] p-8 shadow-2xl">

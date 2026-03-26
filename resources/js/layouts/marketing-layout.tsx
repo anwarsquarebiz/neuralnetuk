@@ -17,7 +17,7 @@ export default function MarketingLayout({ children, transparentNavbar = false }:
 
     return (
         <LenisProvider>
-            <div className="flex min-h-screen flex-col font-sans">
+            <div className="flex min-h-[100svh] flex-col font-sans">
                 <Navbar transparent={transparentNavbar} />
                 <main className={cn('flex-1')}>{children}</main>
                 <Footer />

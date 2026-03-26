@@ -11,8 +11,8 @@ const offices = [
 
 export default function OfficeLocations() {
     return (
-        <section className="py-24 bg-gray-50/50 font-sans">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
+        <section className="py-12 md:py-24 bg-gray-50/50 font-sans">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-10 md:mb-16">
                 <h2 className="text-3xl font-extrabold text-[#0a1a3b] mb-4">Our Offices</h2>
                 <p className="text-[#4a5568] max-w-2xl mx-auto">
                     We have a global presence across three continents.

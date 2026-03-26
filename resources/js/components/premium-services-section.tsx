@@ -69,8 +69,8 @@ export default function PremiumServicesSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-white font-sans">
-            <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
+        <section ref={sectionRef} className="py-12 md:py-24 bg-white font-sans">
+            <div ref={headerRef} className="mx-auto mb-10 md:mb-16 max-w-7xl px-6 lg:px-8 text-center">
                 <h2 className="text-4xl font-extrabold text-gray-900 mb-6">Our Premium Services</h2>
                 <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
                     As a certified IT company, Sapphire helps organizations thrive digitally by offering innovative solutions using cutting-edge tools and frameworks. Contact us to learn more!

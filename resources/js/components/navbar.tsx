@@ -60,8 +60,8 @@ export default function Navbar({ transparent = false }: NavbarProps) {
             <div className="mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 outline-none">
-                    <NeuralIcon className={cn('size-8', isTransparentAtTop ? 'text-blue-400' : 'text-blue-500')} />
-                    <span className={cn('text-xl font-bold tracking-tight', isTransparentAtTop ? 'text-white' : 'text-foreground')}>NeuralNet</span>
+                    <NeuralIcon className={cn('size-7 sm:size-8', isTransparentAtTop ? 'text-blue-400' : 'text-blue-500')} />
+                    <span className={cn('text-lg sm:text-xl font-bold tracking-tight', isTransparentAtTop ? 'text-white' : 'text-foreground')}>NeuralNet</span>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -170,7 +170,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
             <div
                 className={cn(
                     'absolute top-20 left-0 z-40 w-full overflow-hidden border-b bg-white shadow-2xl transition-all duration-300 ease-in-out',
-                    isMegaMenuOpen ? 'visible max-h-[600px] opacity-100' : 'invisible max-h-0 opacity-0',
+                    isMegaMenuOpen ? 'visible max-h-[80svh] opacity-100 overflow-y-auto' : 'invisible max-h-0 opacity-0',
                 )}
                 onMouseEnter={() => setIsMegaMenuOpen(true)}
             >
