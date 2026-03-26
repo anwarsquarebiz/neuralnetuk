@@ -60,7 +60,14 @@ export default function Navbar({ transparent = false }: NavbarProps) {
             <div className="mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 outline-none">
-                    <NeuralIcon className={cn('size-8', isTransparentAtTop ? 'text-blue-400' : 'text-blue-500')} />
+                    {/* <NeuralIcon className={cn('size-8', isTransparentAtTop ? 'text-blue-400' : 'text-blue-500')} /> */}
+                    {
+                        isTransparentAtTop ? (
+                            <img src="/assets/neuralnet-logo.svg" alt="NeuralNet" className="size-8" />
+                        ) : (
+                            <img src="/assets/neuralnet-logo-dark.svg" alt="NeuralNet" className="size-8" />
+                        )
+                    }
                     <span className={cn('text-xl font-bold tracking-tight', isTransparentAtTop ? 'text-white' : 'text-foreground')}>NeuralNet</span>
                 </Link>
 
@@ -113,7 +120,8 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                             <div className="flex h-full flex-col px-6 py-10">
                                 <SheetTitle className="mb-8">
                                     <Link href="/" className="flex items-center gap-2">
-                                        <NeuralIcon className="size-8 text-blue-500" />
+                                        {/* <NeuralIcon className="size-8 text-blue-500" /> */}
+                                        <img src="/assets/neuralnet-logo-dark.svg" alt="NeuralNet" className="size-8" />                                        
                                         <span className="text-foreground text-xl font-bold tracking-tight">NeuralNet</span>
                                     </Link>
                                 </SheetTitle>

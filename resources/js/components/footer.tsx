@@ -28,7 +28,8 @@ export default function Footer() {
                     {/* Logo and Tagline */}
                     <div className="flex flex-col gap-4">
                         <Link href="/" className="flex items-center gap-2">
-                            <NeuralIcon className="size-8 text-blue-500" />
+                            {/* <NeuralIcon className="size-8 text-blue-500" /> */}
+                            <img src="/assets/neuralnet-logo-dark.svg" alt="NeuralNet" className="size-8" />
                             <span className="text-xl font-bold tracking-tight text-gray-900">NeuralNet</span>
                         </Link>
                         <p className="text-sm text-gray-600 leading-relaxed max-w-xs">

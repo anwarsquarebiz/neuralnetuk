@@ -13,7 +13,7 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
                         <SidebarMenuButton asChild isActive={item.url === page.url}>
                             <Link href={item.url} prefetch>
                                 {item.icon && <item.icon />}
-                                <span>{item.title}</span>
+                                <span>{item.title} sdfs</span>
                             </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
