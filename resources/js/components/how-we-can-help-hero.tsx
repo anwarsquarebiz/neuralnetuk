@@ -29,7 +29,7 @@ export default function HowWeCanHelpHero() {
     }, []);
 
     return (
-        <section ref={containerRef} className="bg-[#E4ECFF] py-20 md:pt-32 font-sans overflow-hidden">
+        <section ref={containerRef} className="bg-[#E4ECFF] py-12 md:py-20 md:pt-32 font-sans overflow-hidden">
             <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12">
                 {/* Left Content */}
                 <div ref={contentRef} className="max-w-xl">

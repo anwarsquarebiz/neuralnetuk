@@ -53,18 +53,22 @@ export default function AboutNeuralNet() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="overflow-hidden bg-white py-24 font-sans">
+        <section ref={sectionRef} className="overflow-hidden bg-white py-12 md:py-24 font-sans">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
                     <div ref={imageRef} className="group relative order-2 lg:order-1">
                         <div className="absolute -inset-4 rounded-[2.5rem] bg-blue-600/5 blur-2xl transition-all duration-700 group-hover:bg-blue-600/10"></div>
                         <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] border border-white/50 bg-gray-100 shadow-2xl transition-all duration-700 group-hover:scale-[1.02]">
-                            <img
-                                src="/assets/about-us/about section image.webp"
-                                alt="About NeuralNet"
-                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                loading="lazy"
-                            />
+                            <picture>
+                                <source srcSet="/assets/about-us/about section image.webp" type="image/webp" />
+                                <img
+                                    src="/assets/about-us/about section image.webp"
+                                    alt="About NeuralNet"
+                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 select-none pointer-events-none"
+                                    style={{ transform: 'translateZ(0)' }}
+                                    loading="lazy"
+                                />
+                            </picture>
                         </div>
                     </div>
 

@@ -71,9 +71,9 @@ export default function ServicesSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="font-sans w-full py-20 flex items-center justify-center">
-            <div className='bg-gray-100 w-full md:w-[90%] lg:w-[80%] py-20'>
-                <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
+        <section ref={sectionRef} className="font-sans w-full py-12 md:py-20 flex items-center justify-center">
+            <div className='bg-gray-100 w-full lg:max-w-[90%] xl:max-w-7xl mx-auto py-12 md:py-20 rounded-3xl'>
+                <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-10 md:mb-16">
                 <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Our Services</h2>
                 <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     We offer comprehensive services to develop digital solutions & manage complete product lifecycle. 
@@ -94,7 +94,7 @@ export default function ServicesSection() {
                         { title: 'Data Analytics', icon: LineChart, color: 'text-pink-500', slug: 'data-analytics' },
                         { title: 'Agile', icon: Activity, color: 'text-orange-600', slug: 'agile' },
                     ].map((service, i) => (
-                        <div key={i} className="bg-white rounded-xl p-8 shadow-sm flex flex-col h-full border border-gray-100 hover:shadow-xl transition-all">
+                        <div key={i} className="bg-white rounded-xl p-8 shadow-sm flex flex-col min-h-full border border-gray-100 hover:shadow-xl transition-all">
                             <service.icon className={cn("size-8 mb-6", service.color)} />
                             <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
                             <p className="text-gray-600 text-sm leading-relaxed mb-auto">

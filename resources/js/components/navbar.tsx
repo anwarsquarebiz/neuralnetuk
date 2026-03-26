@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import { Link } from '@inertiajs/react';
 import { Activity, ChevronDown, ChevronRight, Code2, Cpu, Database, FileText, LineChart, Menu, RefreshCcw, Zap } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import NeuralIcon from './neural-icon';
 
 const navLinks = [
     { title: 'Home', href: '/' },
@@ -61,13 +60,11 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 outline-none">
                     {/* <NeuralIcon className={cn('size-8', isTransparentAtTop ? 'text-blue-400' : 'text-blue-500')} /> */}
-                    {
-                        isTransparentAtTop ? (
-                            <img src="/assets/neuralnet-logo.svg" alt="NeuralNet" className="size-8" />
-                        ) : (
-                            <img src="/assets/neuralnet-logo-dark.svg" alt="NeuralNet" className="size-8" />
-                        )
-                    }
+                    {isTransparentAtTop ? (
+                        <img src="/assets/neuralnet-logo.svg" alt="NeuralNet" className="size-8" />
+                    ) : (
+                        <img src="/assets/neuralnet-logo-dark.svg" alt="NeuralNet" className="size-8" />
+                    )}
                     <span className={cn('text-xl font-bold tracking-tight', isTransparentAtTop ? 'text-white' : 'text-foreground')}>NeuralNet</span>
                 </Link>
 
@@ -121,7 +118,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                                 <SheetTitle className="mb-8">
                                     <Link href="/" className="flex items-center gap-2">
                                         {/* <NeuralIcon className="size-8 text-blue-500" /> */}
-                                        <img src="/assets/neuralnet-logo-dark.svg" alt="NeuralNet" className="size-8" />                                        
+                                        <img src="/assets/neuralnet-logo-dark.svg" alt="NeuralNet" className="size-8" />
                                         <span className="text-foreground text-xl font-bold tracking-tight">NeuralNet</span>
                                     </Link>
                                 </SheetTitle>
@@ -178,7 +175,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
             <div
                 className={cn(
                     'absolute top-20 left-0 z-40 w-full overflow-hidden border-b bg-white shadow-2xl transition-all duration-300 ease-in-out',
-                    isMegaMenuOpen ? 'visible max-h-[600px] opacity-100' : 'invisible max-h-0 opacity-0',
+                    isMegaMenuOpen ? 'visible max-h-[80svh] overflow-y-auto opacity-100' : 'invisible max-h-0 opacity-0',
                 )}
                 onMouseEnter={() => setIsMegaMenuOpen(true)}
             >

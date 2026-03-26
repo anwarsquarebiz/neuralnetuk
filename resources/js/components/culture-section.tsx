@@ -55,7 +55,7 @@ export default function CultureSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-white font-sans overflow-hidden">
+        <section ref={sectionRef} className="py-12 md:py-24 bg-white font-sans overflow-hidden">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Left: Text Content */}
@@ -80,38 +80,54 @@ export default function CultureSection() {
                     <div ref={gridRef} className="grid grid-cols-2 gap-4">
                         <div className="space-y-4">
                             <div className="aspect-square bg-blue-50 rounded-[2rem] overflow-hidden group">
-                                <img 
-                                    src="/assets/about-us/our-culture/first.webp" 
-                                    alt="Team Event" 
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                                    loading="lazy"
-                                />
+                                <picture>
+                                    <source srcSet="/assets/about-us/our-culture/first.webp" type="image/webp" />
+                                    <img 
+                                        src="/assets/about-us/our-culture/first.webp" 
+                                        alt="Team Event" 
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none" 
+                                        style={{ transform: 'translateZ(0)' }}
+                                        loading="lazy"
+                                    />
+                                </picture>
                             </div>
                             <div className="aspect-[3/4] bg-indigo-50 rounded-[2rem] overflow-hidden group">
-                                <img 
-                                    src="/assets/about-us/our-culture/second.webp" 
-                                    alt="Workplace" 
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                                    loading="lazy"
-                                />
+                                <picture>
+                                    <source srcSet="/assets/about-us/our-culture/second.webp" type="image/webp" />
+                                    <img 
+                                        src="/assets/about-us/our-culture/second.webp" 
+                                        alt="Workplace" 
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none" 
+                                        style={{ transform: 'translateZ(0)' }}
+                                        loading="lazy"
+                                    />
+                                </picture>
                             </div>
                         </div>
                         <div className="space-y-4 pt-12">
                             <div className="aspect-[3/4] bg-sky-50 rounded-[2rem] overflow-hidden group">
-                                <img 
-                                    src="/assets/about-us/our-culture/third.webp" 
-                                    alt="Collaboration" 
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                                    loading="lazy"
-                                />
+                                <picture>
+                                    <source srcSet="/assets/about-us/our-culture/third.webp" type="image/webp" />
+                                    <img 
+                                        src="/assets/about-us/our-culture/third.webp" 
+                                        alt="Collaboration" 
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none" 
+                                        style={{ transform: 'translateZ(0)' }}
+                                        loading="lazy"
+                                    />
+                                </picture>
                             </div>
                             <div className="aspect-square bg-slate-50 rounded-[2rem] overflow-hidden group">
-                                <img 
-                                    src="/assets/about-us/our-culture/fourth.webp" 
-                                    alt="Office Fun" 
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                                    loading="lazy"
-                                />
+                                <picture>
+                                    <source srcSet="/assets/about-us/our-culture/fourth.webp" type="image/webp" />
+                                    <img 
+                                        src="/assets/about-us/our-culture/fourth.webp" 
+                                        alt="Office Fun" 
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none" 
+                                        style={{ transform: 'translateZ(0)' }}
+                                        loading="lazy"
+                                    />
+                                </picture>
                             </div>
                         </div>
                     </div>

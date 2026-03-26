@@ -106,8 +106,8 @@ export default function ServiceEngagementModels({
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-[#eef4ff] font-sans">
-            <div ref={headerRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center mb-16">
+        <section ref={sectionRef} className="py-12 md:py-24 bg-[#eef4ff] font-sans">
+            <div ref={headerRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center mb-10 md:mb-16">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 break-words">
                     Flexible Engagement Models for {serviceName}
                 </h2>
@@ -119,7 +119,7 @@ export default function ServiceEngagementModels({
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {models.map((model, i) => (
-                        <div key={i} className="bg-white rounded-2xl p-8 shadow-sm flex flex-col h-full border border-gray-100 hover:shadow-xl transition-all">
+                        <div key={i} className="bg-white rounded-2xl p-8 shadow-sm flex flex-col min-h-full border border-gray-100 hover:shadow-xl transition-all">
                             <div className="size-12 bg-blue-50 rounded-xl flex items-center justify-center mb-8 shrink-0">
                                 <model.icon className="size-6 text-blue-600" />
                             </div>

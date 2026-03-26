@@ -68,19 +68,25 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative min-h-[100svh] bg-[#050B20] text-white flex flex-col justify-end overflow-hidden font-sans">
+        <section ref={containerRef} className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden font-sans bg-[#050B20] text-white">
             {/* Hero Background Image */}
-            <div className="absolute inset-0 z-0">
-                <img 
-                    ref={imageRef}
-                    src="/assets/hero  image.webp" 
-                    alt="NeuralNet Hero Overlay" 
-                    className="h-[120%] w-full object-cover opacity-80 mt-[-10%]"
-                />
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                <picture>
+                    <source srcSet="/assets/hero  image.webp" type="image/webp" />
+                    <img 
+                        ref={imageRef}
+                        src="/assets/hero  image.webp" 
+                        alt="NeuralNet Hero Overlay" 
+                        className="h-[120%] w-full object-cover opacity-80 mt-[-10%] select-none pointer-events-none"
+                        style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+                        loading="eager"
+                        fetchPriority="high"
+                    />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050B20] via-transparent to-transparent"></div>
             </div>
 
-            <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pt-32 md:pt-40 lg:px-8 flex flex-col xl:mb-12">
+            <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pt-24 md:pt-40 lg:px-8 flex flex-col xl:mb-12">
                 <h1 ref={titleRef} className="text-3xl font-extrabold tracking-tight md:text-5xl lg:text-6xl leading-tight">
                     NeuralNet Delivering
                 </h1>
@@ -93,7 +99,7 @@ export default function HeroSection() {
             </div>
 
             {/* Hero Content - Positioned at the bottom */}
-            <div className="relative z-10 mx-auto max-w-7xl w-full px-6 py-12 md:pb-24 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+            <div className="relative z-10 mx-auto max-w-7xl w-full px-6 py-8 md:pb-24 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
                 {/* Left Part */}
                 <div className="flex-1 max-w-2xl">
                     <ul ref={listRef} className="space-y-4 mb-10">

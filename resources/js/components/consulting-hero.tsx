@@ -29,7 +29,7 @@ export default function ConsultingHero() {
     }, []);
 
     return (
-        <section ref={containerRef} className="bg-[#E4ECFF] py-20 md:pt-32 font-sans overflow-hidden">
+        <section ref={containerRef} className="bg-[#E4ECFF] py-12 md:pt-32 font-sans overflow-hidden">
             <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
                 {/* Left Content */}
                 <div ref={contentRef} className="max-w-xl">
@@ -51,11 +51,16 @@ export default function ConsultingHero() {
                 {/* Right Image */}
                 <div ref={imageRef} className="flex-1 w-full max-w-md">
                     <div className="relative w-full aspect-video flex items-center justify-center p-4">
-                        <img 
-                            src="/assets/consulting hero.webp" 
-                            alt="Consulting Hero" 
-                            className="w-full object-cover rounded-lg"
-                        />
+                        <picture>
+                            <source srcSet="/assets/consulting hero.webp" type="image/webp" />
+                            <img 
+                                src="/assets/consulting hero.webp" 
+                                alt="Consulting Hero" 
+                                className="w-full h-full object-cover rounded-lg select-none pointer-events-none"
+                                style={{ transform: 'translateZ(0)' }}
+                                loading="lazy"
+                            />
+                        </picture>
                     </div>
                 </div>
             </div>

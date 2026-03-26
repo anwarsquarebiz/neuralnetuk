@@ -89,8 +89,8 @@ export default function EngagementModelsSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-blue-600 text-white font-sans">
-            <div ref={headerRef} className="mx-auto mb-16 max-w-7xl px-6 text-center lg:px-8">
+        <section ref={sectionRef} className="py-12 md:py-24 bg-blue-600 text-white font-sans">
+            <div ref={headerRef} className="mx-auto mb-10 md:mb-16 max-w-7xl px-6 text-center lg:px-8">
                 <h2 className="mb-6 text-4xl font-extrabold">Flexible Engagement Models</h2>
                 <p className="mx-auto max-w-4xl text-lg leading-relaxed opacity-90">
                     NeuralNet provides flexible engagement models designed to support organisations at every stage of growth. Whether you need fully managed services, specialist support, or dedicated engineering teams, our delivery approach adapts to your business goals, technical needs, and operational scale.
@@ -100,7 +100,7 @@ export default function EngagementModelsSection() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div ref={gridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-16">
                     {models.map((model, i) => (
-                        <div key={i} className="bg-white rounded-xl p-8 shadow-2xl flex flex-col h-full text-blue-900">
+                        <div key={i} className="bg-white rounded-xl p-8 shadow-2xl flex flex-col min-h-full text-blue-900">
                             <model.icon className={cn("size-10 mb-6", model.color)} />
                             <h3 className="text-xl font-bold mb-6 leading-tight">{model.title}</h3>
                             <p className="text-sm font-medium opacity-80 leading-relaxed">

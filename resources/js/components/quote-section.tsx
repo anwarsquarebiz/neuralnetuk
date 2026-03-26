@@ -57,9 +57,9 @@ export default function QuoteSection({ quote, title, description }: QuoteSection
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-[#f8fbff] font-sans">
+        <section ref={sectionRef} className="py-12 md:py-24 bg-[#f8fbff] font-sans">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-16 text-left">{title}</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-10 md:mb-16 text-left">{title}</h2>
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
                     {/* Left Quote */}
                     <div ref={leftRef} className="lg:w-1/3 flex flex-col gap-6">

@@ -1,6 +1,8 @@
+import { Button } from '@/components/ui/button';
+import { useIsMobile } from '@/hooks/use-mobile';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 const brands = [
     { name: 'Alembic', src: '/assets/brands/alembic_logo.svg' },
@@ -32,14 +34,32 @@ const brands = [
 gsap.registerPlugin(ScrollTrigger);
 
 export default function BrandTrustSection() {
+    const isMobile = useIsMobile();
+    const [visibleRows, setVisibleRows] = useState(4);
+
     const sectionRef = useRef<HTMLElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
     const gridRef = useRef<HTMLDivElement>(null);
 
+    // Calculate how many brands to show
+    // Mobile: 2 columns, rows * 2
+    // Desktop: all brands
+    const visibleCount = isMobile ? visibleRows * 2 : brands.length;
+    const visibleBrands = brands.slice(0, visibleCount);
+
+    const handleLoadMore = () => {
+        setVisibleRows((prev) => prev + 4);
+        // Wait for DOM update, then refresh ScrollTrigger
+        setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 100);
+    };
+
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             // Header animation
-            gsap.fromTo(headerRef.current, 
+            gsap.fromTo(
+                headerRef.current,
                 { y: 30, opacity: 0 },
                 {
                     y: 0,
@@ -50,11 +70,12 @@ export default function BrandTrustSection() {
                         end: 'top 70%',
                         scrub: 1,
                     },
-                }
+                },
             );
 
             if (gridRef.current) {
-                gsap.fromTo(gridRef.current.children, 
+                gsap.fromTo(
+                    gridRef.current.children,
                     { y: 30, opacity: 0, scale: 0.9 },
                     {
                         y: 0,
@@ -68,7 +89,7 @@ export default function BrandTrustSection() {
                             end: 'top 60%',
                             scrub: 1,
                         },
-                    }
+                    },
                 );
             }
 
@@ -86,27 +107,48 @@ export default function BrandTrustSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-white font-sans">
-            <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
-                <h2 className="text-3xl font-extrabold text-gray-900 mb-6 font-sans">Trusted By The World&apos;s Leading Brands</h2>
-                <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    We are glad to be a digital technology and innovation partner with world&apos;s leading brands. Building greater futures through innovation and collective knowledge.
+        <section ref={sectionRef} className="bg-white py-12 md:py-24 font-sans">
+            <div ref={headerRef} className="mx-auto mb-10 md:mb-16 max-w-7xl px-6 text-center lg:px-8">
+                <h2 className="mb-6 font-sans text-3xl font-extrabold text-gray-900">Trusted By The World&apos;s Leading Brands</h2>
+                <p className="mx-auto max-w-3xl leading-relaxed text-gray-600">
+                    We are glad to be a digital technology and innovation partner with world&apos;s leading brands. Building greater futures through
+                    innovation and collective knowledge.
                 </p>
             </div>
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                    {brands.map((brand, i) => (
-                        <div key={i} className="aspect-[16/9] bg-white border border-gray-100 rounded-xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)] flex items-center justify-center p-6 grayscale hover:grayscale-0 transition-all group overflow-hidden">
-                            <img 
-                                src={brand.src} 
-                                alt={brand.name} 
-                                className="max-w-full max-h-full object-contain"
-                                loading="lazy"
-                            />
+                <div ref={gridRef} className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                    {visibleBrands.map((brand, i) => (
+                        <div
+                            key={i}
+                            className="group flex aspect-[16/9] items-center justify-center overflow-hidden rounded-xl border border-gray-100 bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)] grayscale transition-all hover:grayscale-0"
+                        >
+                            <picture className="flex h-full w-full items-center justify-center">
+                                <source srcSet={brand.src} type="image/webp" />
+                                <img
+                                    src={brand.src}
+                                    alt={brand.name}
+                                    className="pointer-events-none max-h-full max-w-full object-contain select-none"
+                                    style={{ transform: 'translateZ(0)' }}
+                                    loading="lazy"
+                                />
+                            </picture>
                         </div>
                     ))}
                 </div>
+
+                {/* Load More Button - Only Mobile & if more brands exist */}
+                {isMobile && visibleCount < brands.length && (
+                    <div className="mt-12 flex justify-center">
+                        <Button
+                            onClick={handleLoadMore}
+                            variant="outline"
+                            className="h-12 rounded-xl border-blue-600 px-8 font-bold text-blue-600 hover:bg-blue-50"
+                        >
+                            Load More
+                        </Button>
+                    </div>
+                )}
             </div>
         </section>
     );

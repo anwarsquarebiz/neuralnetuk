@@ -49,7 +49,7 @@ export default function CTASection({
     }, []);
 
     return (
-        <section ref={sectionRef} className="border-t border-blue-400/20 bg-[#1e48f7] py-16 font-sans">
+        <section ref={sectionRef} className="border-t border-blue-400/20 bg-[#1e48f7] py-10 md:py-16 font-sans">
             <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
                 <div ref={contentRef} className="space-y-8">
                     <h2 className="mx-auto max-w-4xl text-3xl leading-tight font-extrabold text-white md:text-4xl lg:text-5xl">{title}</h2>

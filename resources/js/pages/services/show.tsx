@@ -24,7 +24,7 @@ export default function ServiceShow({ slug }: ServiceShowProps) {
     if (!content) {
         return (
             <MarketingLayout>
-                <div className="py-32 bg-[#f0f4ff] font-sans flex flex-col items-center justify-center min-h-[60vh] text-center px-6">
+                <div className="py-32 bg-[#f0f4ff] font-sans flex flex-col items-center justify-center min-h-[60svh] text-center px-6">
                     <h1 className="text-4xl font-extrabold text-[#0a1a3b] mb-4">Service Not Found</h1>
                     <p className="text-[#4a5568] mb-8 max-w-md">
                         We couldn&apos;t find the service you&apos;re looking for. It may have been moved or renamed.

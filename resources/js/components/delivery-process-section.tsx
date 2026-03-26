@@ -107,8 +107,8 @@ export default function DeliveryProcessSection({
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden font-sans">
-            <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-24">
+        <section ref={sectionRef} className="py-12 md:py-24 bg-white relative overflow-hidden font-sans">
+            <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-12 md:mb-24">
                 <h2 className="text-4xl font-extrabold text-gray-900">{title}</h2>
             </div>
 
@@ -116,7 +116,7 @@ export default function DeliveryProcessSection({
                 {/* Central Vertical Line */}
                 <div ref={lineRef} className="absolute left-[23px] lg:left-1/2 top-0 bottom-0 w-1 bg-gray-900 -translate-x-1/2"></div>
                 
-                <div className="space-y-24 lg:space-y-0">
+                <div className="space-y-12 lg:space-y-0">
                     {activeSteps.map((step, i) => (
                         <div key={i} className="step-item relative flex items-center w-full lg:min-h-[200px]">
                             {/* Left Column: Content for even steps */}

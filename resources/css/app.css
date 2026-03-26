@@ -110,7 +110,21 @@
 
     html, body {
         @apply overflow-x-hidden w-full relative;
-        scroll-behavior: smooth;
+        /* scroll-behavior: smooth;  --- Removed to prevent conflict with Lenis and jitter on Safari */
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+        -webkit-user-drag: none;
+        @apply select-none;
+    }
+
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     body {
