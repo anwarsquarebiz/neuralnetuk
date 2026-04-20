@@ -11,12 +11,15 @@ const stats = [
 
 export default function StatsGrid({ className }: { className?: string }) {
     return (
-        <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-4", className)}>
+        <div className={cn('grid grid-cols-1 gap-4 sm:grid-cols-2', className)}>
             {stats.map((stat, i) => (
-                <div key={i} className="bg-white rounded-2xl p-4 flex flex-col items-start gap-4 text-[#0a1a3b] border border-gray-50 group hover:border-blue-600/10 transition-all">
-                    <div className="flex flex-col flex-1">
-                        <span className="text-3xl md:text-4xl font-extrabold text-[#1a56db] mb-1">{stat.val}</span>
-                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider opacity-60 leading-tight">{stat.label}</span>
+                <div
+                    key={i}
+                    className="group flex flex-col items-start gap-4 rounded-2xl border border-gray-50 bg-white p-4 text-[#0a1a3b] transition-all hover:border-[#000027]/10"
+                >
+                    <div className="flex flex-1 flex-col">
+                        <span className="mb-1 text-3xl font-extrabold text-[#1a56db] md:text-4xl">{stat.val}</span>
+                        <span className="text-[10px] leading-tight font-bold tracking-wider uppercase opacity-60 md:text-xs">{stat.label}</span>
                     </div>
                 </div>
             ))}

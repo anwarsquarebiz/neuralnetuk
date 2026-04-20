@@ -100,7 +100,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                             )}
                         </div>
                     ))}
-                    <Button asChild className="ml-4 h-auto rounded-lg bg-blue-600 py-2 text-sm text-white shadow-lg hover:bg-blue-700">
+                    <Button asChild className="ml-4 h-auto rounded-lg bg-[#000027]/80 py-2 text-sm text-white hover:bg-[#000027]">
                         <Link href="/contact">Talk To An Expert</Link>
                     </Button>
                 </div>
@@ -160,7 +160,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                                     ))}
                                     <Button
                                         asChild
-                                        className="mt-4 h-auto w-full rounded-lg bg-blue-600 py-3 text-sm text-white shadow-lg hover:bg-blue-700"
+                                        className="mt-4 h-auto w-full rounded-lg bg-[#000027] py-3 text-sm text-white shadow-lg hover:bg-blue-700"
                                     >
                                         <Link href="/contact">Talk To An Expert</Link>
                                     </Button>
@@ -181,7 +181,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
             >
                 <div className="mx-auto flex min-h-[200px] px-4 sm:px-6 lg:px-8">
                     {/* Left Sidebar */}
-                    <div className="relative flex w-1/4 flex-col justify-between overflow-hidden bg-blue-600 p-10 text-white">
+                    <div className="relative flex w-1/4 flex-col justify-between overflow-hidden bg-[#000027] p-10 text-white">
                         {/* Minimalist background accent */}
                         <div className="pointer-events-none absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 opacity-10">
                             <div className="h-[300px] w-[300px] rounded-full border-[20px] border-white"></div>
@@ -196,7 +196,7 @@ export default function Navbar({ transparent = false }: NavbarProps) {
 
                         <Button
                             asChild
-                            className="relative z-10 h-auto w-full rounded-md bg-white px-6 py-3 text-sm font-bold text-blue-600 hover:bg-gray-100"
+                            className="relative z-10 h-auto w-full rounded-md bg-white px-6 py-3 text-sm font-bold text-[#000027] hover:bg-gray-100"
                         >
                             <Link href="/contact">Hire Now</Link>
                         </Button>
@@ -220,10 +220,10 @@ export default function Navbar({ transparent = false }: NavbarProps) {
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-1">
-                                        <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-blue-600">
+                                        <h4 className="text-sm font-bold text-gray-900 transition-colors group-hover:text-[#000027]">
                                             {service.title}
                                         </h4>
-                                        <ChevronRight className="size-3 -translate-x-2 text-blue-600 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+                                        <ChevronRight className="size-3 -translate-x-2 text-[#000027] opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
                                     </div>
                                     <p className="mt-1 text-xs text-gray-500">{service.desc}</p>
                                 </div>

@@ -107,8 +107,8 @@ export default function BrandTrustSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="bg-white py-12 md:py-24 font-sans">
-            <div ref={headerRef} className="mx-auto mb-10 md:mb-16 max-w-7xl px-6 text-center lg:px-8">
+        <section ref={sectionRef} className="bg-white py-12 font-sans md:py-24">
+            <div ref={headerRef} className="mx-auto mb-10 max-w-7xl px-6 text-center md:mb-16 lg:px-8">
                 <h2 className="mb-6 font-sans text-3xl font-extrabold text-gray-900">Trusted By The World&apos;s Leading Brands</h2>
                 <p className="mx-auto max-w-3xl leading-relaxed text-gray-600">
                     We are glad to be a digital technology and innovation partner with world&apos;s leading brands. Building greater futures through
@@ -143,7 +143,7 @@ export default function BrandTrustSection() {
                         <Button
                             onClick={handleLoadMore}
                             variant="outline"
-                            className="h-12 rounded-xl border-blue-600 px-8 font-bold text-blue-600 hover:bg-blue-50"
+                            className="h-12 rounded-xl border-[#000027] px-8 font-bold text-[#000027] hover:bg-blue-50"
                         >
                             Load More
                         </Button>

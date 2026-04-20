@@ -1,7 +1,7 @@
-import { useLayoutEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { cn } from '@/lib/utils';
+import { useLayoutEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +16,8 @@ export default function FullWidthBanner({ text, className }: FullWidthBannerProp
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(textRef.current,
+            gsap.fromTo(
+                textRef.current,
                 { y: 50, opacity: 0, scale: 0.8 },
                 {
                     y: 0,
@@ -27,8 +28,8 @@ export default function FullWidthBanner({ text, className }: FullWidthBannerProp
                         start: 'top 95%',
                         end: 'top 60%',
                         scrub: 1,
-                    }
-                }
+                    },
+                },
             );
 
             ScrollTrigger.refresh();
@@ -42,9 +43,12 @@ export default function FullWidthBanner({ text, className }: FullWidthBannerProp
     }, []);
 
     return (
-        <section ref={bannerRef} className={cn("w-full bg-blue-600 py-6 overflow-hidden", className)}>
-            <div className="w-full text-center px-4">
-                <h2 ref={textRef} className="text-2xl sm:text-3xl md:text-6xl lg:text-7xl font-extrabold text-white uppercase tracking-tight opacity-90 break-words">
+        <section ref={bannerRef} className={cn('w-full overflow-hidden bg-[#000027] py-6', className)}>
+            <div className="w-full px-4 text-center">
+                <h2
+                    ref={textRef}
+                    className="text-2xl font-extrabold tracking-tight break-words text-white uppercase opacity-90 sm:text-3xl md:text-6xl lg:text-7xl"
+                >
                     {text}
                 </h2>
             </div>

@@ -29,19 +29,17 @@ export default function ServiceHero({ title, description, imageSrc, buttonText =
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative w-full overflow-hidden bg-[#f0f4ff] pt-24 pb-12 md:pt-32 md:pb-20 font-sans">
+        <section ref={sectionRef} className="relative w-full overflow-hidden bg-[#f0f4ff] pt-24 pb-12 font-sans md:pt-32 md:pb-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center justify-between gap-12 lg:flex-row">
                     {/* Left Content */}
-                    <div ref={contentRef} className="max-w-2xl flex-1 text-left min-w-0">
-                        <h1 className="mb-6 text-3xl leading-tight font-extrabold text-[#0a1a3b] md:text-5xl lg:text-6xl break-words">
-                            {title}
-                        </h1>
+                    <div ref={contentRef} className="max-w-2xl min-w-0 flex-1 text-left">
+                        <h1 className="mb-6 text-3xl leading-tight font-extrabold break-words text-[#0a1a3b] md:text-5xl lg:text-6xl">{title}</h1>
                         <p className="mb-10 max-w-xl text-lg leading-relaxed font-medium text-[#4a5568]">{description}</p>
                         <div className="flex flex-wrap gap-4">
                             <Button
                                 asChild
-                                className="h-auto rounded-md bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-lg hover:bg-blue-700"
+                                className="h-auto rounded-md bg-[#000027] px-8 py-3 text-sm font-bold text-white shadow-lg hover:bg-blue-700"
                             >
                                 <Link href={buttonHref}>{buttonText}</Link>
                             </Button>
@@ -51,15 +49,15 @@ export default function ServiceHero({ title, description, imageSrc, buttonText =
                     {/* Right Image/Placeholder */}
                     <div ref={imageRef} className="relative w-full flex-1 lg:max-w-[600px]">
                         {imageSrc ? (
-                            <div className="relative overflow-hidden rounded-2xl border-4 border-white shadow-2xl aspect-video">
+                            <div className="relative aspect-video overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
                                 <picture>
                                     <source srcSet={imageSrc} type="image/webp" />
-                                    <img 
-                                        src={imageSrc} 
-                                        alt={title} 
-                                        className="w-full h-full object-cover select-none pointer-events-none" 
+                                    <img
+                                        src={imageSrc}
+                                        alt={title}
+                                        className="pointer-events-none h-full w-full object-cover select-none"
                                         style={{ transform: 'translateZ(0)' }}
-                                        loading="eager" 
+                                        loading="eager"
                                     />
                                 </picture>
                             </div>

@@ -1,13 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
-import { 
-    Select, 
-    SelectContent, 
-    SelectItem, 
-    SelectTrigger, 
-    SelectValue 
-} from '@/components/ui/select';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { useForm } from '@inertiajs/react';
 import { Upload } from 'lucide-react';
@@ -30,7 +24,7 @@ export default function ContactForm() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         // Gather data into FormData (handled by Inertia if file is present)
         post('/contact', {
             forceFormData: true,
@@ -48,50 +42,45 @@ export default function ContactForm() {
     };
 
     return (
-        <div className="bg-white shadow-2xl overflow-hidden font-sans">
+        <div className="overflow-hidden bg-white font-sans shadow-2xl">
             {/* Header */}
             <div className="bg-[#1e48f7] p-4">
-                <h3 className="text-white font-bold text-base">
-                    Questions? Contact us for Sales Enquiry!
-                </h3>
+                <h3 className="text-base font-bold text-white">Questions? Contact us for Sales Enquiry!</h3>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-8 md:p-10 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-6 p-8 md:p-10">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {/* Name */}
                     <div className="space-y-2">
-                        <Input 
+                        <Input
                             value={data.name}
-                            onChange={e => setData('name', e.target.value)}
-                            placeholder="Full Name *" 
-                            className="bg-gray-50/50 border-gray-300 rounded-lg h-12 focus:ring-[#1e48f7] transition-all"
+                            onChange={(e) => setData('name', e.target.value)}
+                            placeholder="Full Name *"
+                            className="h-12 rounded-lg border-gray-300 bg-gray-50/50 transition-all focus:ring-[#1e48f7]"
                             required
                         />
                         {errors.name && <p className="text-xs text-red-500">{errors.name}</p>}
                     </div>
                     {/* Email */}
                     <div className="space-y-2">
-                        <Input 
+                        <Input
                             type="email"
                             value={data.email}
-                            onChange={e => setData('email', e.target.value)}
-                            placeholder="Email *" 
-                            className="bg-gray-50/50 border-gray-300 rounded-lg h-12 focus:ring-[#1e48f7] transition-all"
+                            onChange={(e) => setData('email', e.target.value)}
+                            placeholder="Email *"
+                            className="h-12 rounded-lg border-gray-300 bg-gray-50/50 transition-all focus:ring-[#1e48f7]"
                             required
                         />
                         {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {/* Mobile Number */}
                     <div className="flex gap-2">
-                        <Select 
-                            value={data.countryCode} 
-                            onValueChange={val => setData('countryCode', val)}
-                        >
-                            <SelectTrigger className="w-24 bg-gray-50/50 border-gray-300 rounded-lg h-12">
+                        <Select value={data.countryCode} onValueChange={(val) => setData('countryCode', val)}>
+                            <SelectTrigger className="h-12 w-24 rounded-lg border-gray-300 bg-gray-50/50">
                                 <SelectValue placeholder="IN" />
                             </SelectTrigger>
                             <SelectContent>
@@ -101,11 +90,11 @@ export default function ContactForm() {
                             </SelectContent>
                         </Select>
                         <div className="flex-1 space-y-2">
-                            <Input 
+                            <Input
                                 value={data.phone}
-                                onChange={e => setData('phone', e.target.value)}
-                                placeholder="Mobile Number *" 
-                                className="w-full bg-gray-50/50 border-gray-300 rounded-lg h-12 focus:ring-[#1e48f7] transition-all"
+                                onChange={(e) => setData('phone', e.target.value)}
+                                placeholder="Mobile Number *"
+                                className="h-12 w-full rounded-lg border-gray-300 bg-gray-50/50 transition-all focus:ring-[#1e48f7]"
                                 required
                             />
                             {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
@@ -113,11 +102,8 @@ export default function ContactForm() {
                     </div>
                     {/* Interest */}
                     <div className="space-y-2">
-                        <Select 
-                            value={data.interest} 
-                            onValueChange={val => setData('interest', val)}
-                        >
-                            <SelectTrigger className="bg-gray-50/50 border-gray-300 rounded-lg h-12 text-gray-500">
+                        <Select value={data.interest} onValueChange={(val) => setData('interest', val)}>
+                            <SelectTrigger className="h-12 rounded-lg border-gray-300 bg-gray-50/50 text-gray-500">
                                 <SelectValue placeholder="Interested In? *" />
                             </SelectTrigger>
                             <SelectContent>
@@ -131,14 +117,11 @@ export default function ContactForm() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {/* Budget */}
                     <div className="space-y-2">
-                        <Select 
-                            value={data.budget} 
-                            onValueChange={val => setData('budget', val)}
-                        >
-                            <SelectTrigger className="bg-gray-50/50 border-gray-300 rounded-lg h-12 text-gray-500">
+                        <Select value={data.budget} onValueChange={(val) => setData('budget', val)}>
+                            <SelectTrigger className="h-12 rounded-lg border-gray-300 bg-gray-50/50 text-gray-500">
                                 <SelectValue placeholder="Project Budget *" />
                             </SelectTrigger>
                             <SelectContent>
@@ -151,11 +134,8 @@ export default function ContactForm() {
                     </div>
                     {/* Select Project */}
                     <div className="space-y-2">
-                        <Select 
-                            value={data.projectType} 
-                            onValueChange={val => setData('projectType', val)}
-                        >
-                            <SelectTrigger className="bg-gray-50/50 border-gray-300 rounded-lg h-12 text-gray-500">
+                        <Select value={data.projectType} onValueChange={(val) => setData('projectType', val)}>
+                            <SelectTrigger className="h-12 rounded-lg border-gray-300 bg-gray-50/50 text-gray-500">
                                 <SelectValue placeholder="Select Project *" />
                             </SelectTrigger>
                             <SelectContent>
@@ -169,38 +149,41 @@ export default function ContactForm() {
 
                 {/* Description */}
                 <div className="space-y-2">
-                    <Textarea 
+                    <Textarea
                         value={data.description}
-                        onChange={e => setData('description', e.target.value)}
-                        placeholder="Tell about your project here... *" 
-                        className="bg-gray-50/50 border-gray-300 rounded-2xl min-h-[140px] p-4 focus:ring-[#1e48f7] transition-all"
+                        onChange={(e) => setData('description', e.target.value)}
+                        placeholder="Tell about your project here... *"
+                        className="min-h-[140px] rounded-2xl border-gray-300 bg-gray-50/50 p-4 transition-all focus:ring-[#1e48f7]"
                         required
                     />
                     {errors.description && <p className="text-xs text-red-500">{errors.description}</p>}
                 </div>
 
                 {/* File Upload */}
-                <div 
+                <div
                     onClick={() => fileInputRef.current?.click()}
-                    className="border-2 border-dashed border-gray-300 rounded-2xl p-6 flex flex-col items-center justify-center bg-gray-50/30 group hover:border-[#1e48f7]/40 transition-all cursor-pointer"
+                    className="group flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-gray-50/30 p-6 transition-all hover:border-[#1e48f7]/40"
                 >
-                    <input 
-                        type="file" 
-                        ref={fileInputRef}
-                        className="hidden" 
-                        onChange={handleFileChange}
-                    />
-                    <div className="size-10 bg-white shadow-sm rounded-full flex items-center justify-center mb-2 text-gray-400 group-hover:text-[#1e48f7] transition-colors">
+                    <input type="file" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
+                    <div className="mb-2 flex size-10 items-center justify-center rounded-full bg-white text-gray-400 shadow-sm transition-colors group-hover:text-[#1e48f7]">
                         <Upload className="size-5" />
                     </div>
                     <p className="text-sm font-medium text-gray-600">
-                        {data.file ? <span className="text-[#1e48f7]">{data.file.name}</span> : <><span className="text-[#1e48f7]">Click to upload</span> or drag and drop</>}
+                        {data.file ? (
+                            <span className="text-[#1e48f7]">{data.file.name}</span>
+                        ) : (
+                            <>
+                                <span className="text-[#1e48f7]">Click to upload</span> or drag and drop
+                            </>
+                        )}
                     </p>
-                    <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-wider">
-                        Any File (e.g., pdf, doc, images, zip etc.)
-                    </p>
+                    <p className="mt-1 text-[10px] tracking-wider text-gray-400 uppercase">Any File (e.g., pdf, doc, images, zip etc.)</p>
                     <div className="mt-4">
-                        <Button type="button" variant="outline" className="bg-[#1e48f7] hover:bg-[#1e48f7]/90 text-white border-transparent text-xs px-6 rounded-lg h-9">
+                        <Button
+                            type="button"
+                            variant="outline"
+                            className="h-9 rounded-lg border-transparent bg-[#1e48f7] px-6 text-xs text-white hover:bg-[#1e48f7]/90"
+                        >
                             {data.file ? 'Change' : 'Upload'}
                         </Button>
                     </div>
@@ -208,30 +191,26 @@ export default function ContactForm() {
 
                 {/* Subscription Checkbox */}
                 <div className="flex items-center gap-3">
-                    <Checkbox 
-                        id="subscribe" 
+                    <Checkbox
+                        id="subscribe"
                         checked={data.subscribe}
                         onCheckedChange={(checked: boolean | 'indeterminate') => setData('subscribe', checked === true)}
-                        className="rounded-md border-gray-300 data-[state=checked]:bg-[#1e48f7] data-[state=checked]:border-[#1e48f7]" 
+                        className="rounded-md border-gray-300 data-[state=checked]:border-[#1e48f7] data-[state=checked]:bg-[#1e48f7]"
                     />
-                    <label htmlFor="subscribe" className="text-xs text-gray-500 leading-none cursor-pointer">
+                    <label htmlFor="subscribe" className="cursor-pointer text-xs leading-none text-gray-500">
                         Keep me informed about NeuralNet&apos;s activities and services by subscribing to our newsletter.
                     </label>
                 </div>
 
                 {/* Buttons */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Button 
-                        type="button" 
-                        variant="outline"
-                        className="h-12 rounded-lg text-blue-600 border-blue-600 hover:bg-blue-50 font-bold"
-                    >
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <Button type="button" variant="outline" className="h-12 rounded-lg border-[#000027] font-bold text-[#000027] hover:bg-blue-50">
                         Schedule a consulting
                     </Button>
-                    <Button 
-                        type="submit" 
+                    <Button
+                        type="submit"
                         disabled={processing}
-                        className="h-12 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-200"
+                        className="h-12 rounded-lg bg-[#000027] font-bold text-white shadow-lg shadow-blue-200 hover:bg-blue-700"
                     >
                         {processing ? 'Submitting...' : 'Submit'}
                     </Button>

@@ -62,8 +62,8 @@ export default function LeadershipSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="overflow-hidden bg-white py-12 md:py-24 font-sans">
-            <div ref={headerRef} className="mx-auto mb-12 md:mb-20 max-w-7xl px-6 text-center lg:px-8">
+        <section ref={sectionRef} className="overflow-hidden bg-white py-12 font-sans md:py-24">
+            <div ref={headerRef} className="mx-auto mb-12 max-w-7xl px-6 text-center md:mb-20 lg:px-8">
                 <h2 className="mb-6 text-3xl font-extrabold text-black md:text-4xl">Our Leadership</h2>
                 <p className="mx-auto max-w-3xl px-4 text-sm leading-relaxed text-gray-600 md:text-base">
                     The outlook, passion and experience of our leaders guides Sapphire. They have a relentless passion to offer the highest levels of
@@ -82,12 +82,12 @@ export default function LeadershipSection() {
                             <div className="relative aspect-square w-full max-w-[200px] flex-shrink-0 overflow-hidden rounded-[2rem] bg-[#C4C4C4] shadow-sm transition-transform duration-500 group-hover:scale-[1.02] sm:max-w-[240px]">
                                 <picture>
                                     <source srcSet={leader.src} type="image/png" />
-                                    <img 
-                                        src={leader.src} 
-                                        alt={leader.name} 
-                                        className="h-full w-full object-cover select-none pointer-events-none" 
+                                    <img
+                                        src={leader.src}
+                                        alt={leader.name}
+                                        className="pointer-events-none h-full w-full object-cover select-none"
                                         style={{ transform: 'translateZ(0)' }}
-                                        loading="lazy" 
+                                        loading="lazy"
                                     />
                                 </picture>
                             </div>
@@ -95,7 +95,7 @@ export default function LeadershipSection() {
                             {/* Right: Info */}
                             <div className="flex min-w-0 flex-1 flex-col justify-center">
                                 <h3 className="mb-2 text-2xl leading-tight font-bold whitespace-normal text-black md:text-3xl">{leader.name}</h3>
-                                <p className="text-lg font-bold tracking-tight text-blue-600 uppercase md:text-xl">{leader.role}</p>
+                                <p className="text-lg font-bold tracking-tight text-[#000027] uppercase md:text-xl">{leader.role}</p>
                             </div>
                         </div>
                     ))}

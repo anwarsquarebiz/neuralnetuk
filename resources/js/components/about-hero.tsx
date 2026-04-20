@@ -20,7 +20,7 @@ export default function AboutHero() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="overflow-hidden bg-[#f0f4ff] pt-24 pb-12 md:pt-32 md:pb-20 font-sans">
+        <section ref={sectionRef} className="overflow-hidden bg-[#f0f4ff] pt-24 pb-12 font-sans md:pt-32 md:pb-20">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
                     {/* Left: Text Content */}
@@ -33,7 +33,7 @@ export default function AboutHero() {
                             business specialists is dedicated to your success.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4 pt-4 lg:justify-start">
-                            <Button className="h-14 rounded-xl bg-blue-600 px-10 text-lg font-bold text-white shadow-lg shadow-blue-200 hover:bg-blue-700">
+                            <Button className="h-14 rounded-xl bg-[#000027] px-10 text-lg font-bold text-white shadow-lg shadow-blue-200 hover:bg-blue-700">
                                 Contact Us
                             </Button>
                         </div>
@@ -41,14 +41,14 @@ export default function AboutHero() {
 
                     {/* Right: Illustration/Image Mockup */}
                     <div ref={imageRef} className="group relative">
-                        <div className="absolute -inset-4 rounded-[2rem] bg-blue-600/5 blur-2xl transition-all duration-700 group-hover:bg-blue-600/10"></div>
-                        <div className="relative transform overflow-hidden rounded-[2rem] border border-white/50 bg-white p-4 shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-700 group-hover:scale-[1.02] aspect-[4/3]">
+                        <div className="absolute -inset-4 rounded-[2rem] bg-[#000027]/5 blur-2xl transition-all duration-700 group-hover:bg-[#000027]/10"></div>
+                        <div className="relative aspect-[4/3] transform overflow-hidden rounded-[2rem] border border-white/50 bg-white p-4 shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-700 group-hover:scale-[1.02]">
                             <picture>
                                 <source srcSet="/assets/about-us/about-hero.webp" type="image/webp" />
                                 <img
                                     src="/assets/about-us/about-hero.webp"
                                     alt="NeuralNet Innovation"
-                                    className="w-full h-full rounded-2xl object-cover shadow-inner select-none pointer-events-none"
+                                    className="pointer-events-none h-full w-full rounded-2xl object-cover shadow-inner select-none"
                                     style={{ transform: 'translateZ(0)' }}
                                     loading="eager"
                                 />

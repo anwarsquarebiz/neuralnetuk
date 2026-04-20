@@ -63,7 +63,7 @@ export default function AboutUsStats() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="overflow-hidden bg-blue-600 py-12 font-sans text-white md:py-20">
+        <section ref={sectionRef} className="overflow-hidden bg-[#000027] py-12 font-sans text-white md:py-20">
             <div ref={headerRef} className="mx-auto mb-10 max-w-7xl px-6 text-center md:mb-16 lg:px-8">
                 <h2 className="mb-6 text-3xl font-extrabold break-words md:text-4xl">About Us</h2>
                 <p className="mx-auto max-w-4xl text-lg leading-relaxed opacity-90">
@@ -98,7 +98,7 @@ export default function AboutUsStats() {
                             val: '25+',
                             label: 'Years Combined IT Industry Expertise',
                             icon: Briefcase,
-                            color: 'bg-blue-50 text-blue-600',
+                            color: 'bg-blue-50 text-[#000027]',
                         },
                         {
                             val: '95%',
