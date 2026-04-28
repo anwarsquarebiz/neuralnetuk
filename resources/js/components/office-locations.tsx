@@ -11,29 +11,26 @@ const offices = [
 
 export default function OfficeLocations() {
     return (
-        <section className="py-12 md:py-24 bg-gray-50/50 font-sans">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-10 md:mb-16">
-                <h2 className="text-3xl font-extrabold text-[#0a1a3b] mb-4">Our Offices</h2>
-                <p className="text-[#4a5568] max-w-2xl mx-auto">
-                    We have a global presence across three continents.
-                </p>
+        <section className="bg-gray-50/50 py-12 font-sans md:py-24">
+            <div className="mx-auto mb-10 max-w-7xl px-6 text-center md:mb-16 lg:px-8">
+                <h2 className="mb-4 text-3xl font-extrabold text-[#0a1a3b]">Our Offices</h2>
+                <p className="mx-auto max-w-2xl text-[#4a5568]">We have a global presence across three continents.</p>
             </div>
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     {offices.map((office, i) => (
-                        <div key={i} className="bg-white rounded-3xl p-8 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] border border-gray-100 group hover:border-blue-600/20 transition-all text-center flex flex-col items-center">
-                            <div className="size-20 bg-gray-50 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:bg-blue-50 transition-colors">
+                        <div
+                            key={i}
+                            className="group flex flex-col items-center rounded-3xl border border-gray-100 bg-white p-8 text-center shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] transition-all hover:border-[#000027]/20"
+                        >
+                            <div className="mb-6 flex size-20 items-center justify-center rounded-2xl bg-gray-50 text-4xl transition-colors group-hover:bg-blue-50">
                                 {office.flag}
                             </div>
-                            <h3 className="text-xl font-bold text-[#0a1a3b] mb-4">
-                                {office.country}
-                            </h3>
+                            <h3 className="mb-4 text-xl font-bold text-[#0a1a3b]">{office.country}</h3>
                             <div className="flex items-start justify-center gap-2 text-[#4a5568]">
-                                <MapPin className="size-4 mt-1 flex-shrink-0 text-blue-600" />
-                                <p className="text-sm leading-relaxed max-w-[200px]">
-                                    {office.address}
-                                </p>
+                                <MapPin className="mt-1 size-4 flex-shrink-0 text-[#000027]" />
+                                <p className="max-w-[200px] text-sm leading-relaxed">{office.address}</p>
                             </div>
                         </div>
                     ))}

@@ -1,12 +1,10 @@
 import AboutHero from '@/components/about-hero';
-import AboutNeuralNet from '@/components/about-neuralnet';
-import BrandTrustSection from '@/components/brand-trust';
-import CoreValues from '@/components/core-values';
 import CTASection from '@/components/cta-section';
-import CultureSection from '@/components/culture-section';
-import ImpactSection from '@/components/impact-section';
+import HowWeWorkSection from '@/components/how-we-work';
 import LeadershipSection from '@/components/leadership-section';
-import VisionMission from '@/components/vision-mission';
+import LocationSection from '@/components/location-section';
+import SlidingBanner from '@/components/sliding-banner';
+import WhatWeOperateSection from '@/components/what-we-operate';
 import MarketingLayout from '@/layouts/marketing-layout';
 import { Head } from '@inertiajs/react';
 
@@ -15,31 +13,25 @@ export default function About() {
         <MarketingLayout>
             <Head title="About Us - NeuralNet" />
 
-            {/* 1. Hero */}
+            {/* 1. Hero - Opening Statement */}
             <AboutHero />
 
-            {/* 2. Profile */}
-            <AboutNeuralNet />
+            {/* 2. Sliding Banner - Build, Deploy, Secure, Evaluate */}
+            <SlidingBanner />
 
-            {/* 3. Vision & Mission */}
-            <VisionMission />
+            {/* 3. How We Work */}
+            <HowWeWorkSection />
 
-            {/* 4. Global Impact */}
-            <ImpactSection />
+            {/* 4. What We Operate Across */}
+            <WhatWeOperateSection />
 
-            {/* 5. Core Values */}
-            <CoreValues />
-
-            {/* 6. Our Culture */}
-            <CultureSection />
-
-            {/* 7. Leadership Team */}
+            {/* 5. Leadership Team & Our People */}
             <LeadershipSection />
 
-            {/* 8. Brand Trust */}
-            <BrandTrustSection />
+            {/* 6. Location */}
+            <LocationSection />
 
-            {/* 9. Final CTA */}
+            {/* 7. Final CTA */}
             <CTASection />
         </MarketingLayout>
     );

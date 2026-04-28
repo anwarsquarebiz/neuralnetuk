@@ -1,8 +1,10 @@
-import { Button } from '@/components/ui/button';
-import { Link } from '@inertiajs/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Eye, Phone } from 'lucide-react';
 import { useLayoutEffect, useRef } from 'react';
+import ButtonCom from './common/ButtonCom';
+import ButtonSecondary from './common/ButtonSecondary';
+import Orb from './creative-components/Orb';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,31 +23,33 @@ export default function HeroSection() {
             // Initial fade-in and slide-up for text elements on page load
             const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.8 } });
 
-            tl.fromTo([titleRef.current, subtitleRef.current, textRef.current, buttonRef.current, rightContentRef.current],
+            tl.fromTo(
+                [titleRef.current, subtitleRef.current, textRef.current, buttonRef.current, rightContentRef.current],
                 { y: 30, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
                     stagger: 0.1,
-                    delay: 0.2
-                }
+                    delay: 0.2,
+                },
             );
 
             if (listRef.current) {
-                tl.fromTo(Array.from(listRef.current.children),
+                tl.fromTo(
+                    Array.from(listRef.current.children),
                     { x: -20, opacity: 0 },
                     {
                         x: 0,
                         opacity: 1,
-                        stagger: 0.1
+                        stagger: 0.1,
                     },
-                    '-=0.4'
+                    '-=0.4',
                 );
             }
 
-            // Scroll-triggered parallax effect for background image
-            gsap.to(imageRef.current, {
-                y: '20%',
+            // Parallax effect for the entire hero section (Slow move - Increased intensity)
+            gsap.to(containerRef.current, {
+                yPercent: 50,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: containerRef.current,
@@ -54,6 +58,7 @@ export default function HeroSection() {
                     scrub: true,
                 },
             });
+
             ScrollTrigger.refresh();
         }, containerRef);
 
@@ -68,66 +73,61 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden font-sans bg-[#050B20] text-white">
+        <section
+            ref={containerRef}
+            className="relative z-0 flex min-h-[100svh] flex-col justify-start overflow-hidden bg-white font-sans text-[#000027]"
+        >
             {/* Hero Background Image */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
+            {/* <div className="absolute inset-0 z-0 overflow-hidden">
                 <picture>
                     <source srcSet="/assets/hero  image.webp" type="image/webp" />
-                    <img 
+                    <img
                         ref={imageRef}
-                        src="/assets/hero  image.webp" 
-                        alt="NeuralNet Hero Overlay" 
-                        className="h-[120%] w-full object-cover opacity-80 mt-[-10%] select-none pointer-events-none"
+                        src="/assets/hero  image.webp"
+                        alt="NeuralNet Hero Overlay"
+                        className="pointer-events-none mt-[-10%] h-[120%] w-full object-cover opacity-80 select-none"
                         style={{ transform: 'translateZ(0)', willChange: 'transform' }}
                         loading="eager"
                         fetchPriority="high"
                     />
                 </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050B20] via-transparent to-transparent"></div>
+            </div> */}
+
+            {/* <LightPillar
+                topColor="#5227FF"
+                bottomColor="#000027"
+                intensity={1.4}
+                rotationSpeed={1.1}
+                glowAmount={0.004}
+                pillarWidth={6}
+                pillarHeight={0.4}
+                noiseIntensity={0.8}
+                pillarRotation={45}
+                interactive={true}
+                mixBlendMode="multiply"
+                quality="high"
+                className="z-0"
+            /> */}
+
+            <div className="absolute inset-0">
+                <Orb hoverIntensity={1.5} rotateOnHover hue={0} forceHoverState={false} backgroundColor="#ffffff" />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-7xl w-full px-6 pt-24 md:pt-40 lg:px-8 flex flex-col xl:mb-12">
-                <h1 ref={titleRef} className="text-3xl font-extrabold tracking-tight md:text-5xl lg:text-6xl leading-tight">
-                    NeuralNet Delivering
+            <div className="max-w-8xl pointer-events-none relative z-10 mx-auto flex w-full flex-col px-6 pt-24 md:pt-40 lg:px-20 xl:mb-12">
+                <h1 ref={titleRef} className="text-2xl leading-tight font-extrabold tracking-tight md:text-4xl lg:text-5xl">
+                    Most organisations don't have an AI problem.
                 </h1>
-                <h2 ref={subtitleRef} className="text-3xl font-extrabold tracking-tight md:text-5xl lg:text-6xl leading-tight text-blue-500 font-sans">
-                    Business Outcomes with AI
+                <h2 ref={subtitleRef} className="font-sans text-2xl leading-tight font-extrabold tracking-tight md:text-4xl lg:text-5xl">
+                    They have a systems problem.
                 </h2>
-                <p ref={textRef} className="text-lg md:text-xl text-gray-300 font-medium mt-4 italic">
-                    (Limitless Possibilities)
+                <p ref={textRef} className="mt-6 w-full text-base leading-relaxed md:w-[70%] md:text-lg lg:w-1/2">
+                    NeuralNet designs and deploys the AI infrastructure that turns business problems into complete solutions — software, security,
+                    agents, avatars, and the oversight layer that makes sure all of it performs.
                 </p>
-            </div>
-
-            {/* Hero Content - Positioned at the bottom */}
-            <div className="relative z-10 mx-auto max-w-7xl w-full px-6 py-8 md:pb-24 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-                {/* Left Part */}
-                <div className="flex-1 max-w-2xl">
-                    <ul ref={listRef} className="space-y-4 mb-10">
-                        <li className="flex items-start gap-3 text-sm md:text-base font-medium text-gray-200">
-                            <span className="size-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
-                            <span>Most-rated <span className="font-bold text-white">#1 App Development</span> Company <span className="font-bold text-white">on Clutch</span> in India and USA.</span>
-                        </li>
-                        <li className="flex items-start gap-3 text-sm md:text-base font-medium text-gray-200">
-                            <span className="size-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
-                            <span>Trusted by <span className="font-bold text-white">20+ Fortune 500 Companies</span> and a Clutch Leader.</span>
-                        </li>
-                        <li className="flex items-start gap-3 text-sm md:text-base font-medium text-gray-200">
-                            <span className="size-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0"></span>
-                            <span>We&apos;ve been Redefining Excellence for over <span className="font-bold text-white">Two Decades.</span></span>
-                        </li>
-                    </ul>
-                    <div ref={buttonRef}>
-                        <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-md px-10 py-2 h-auto text-sm md:text-base font-bold shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                            <Link href="/contact">Request A Call</Link>
-                        </Button>
-                    </div>
-                </div>
-
-                {/* Right Part */}
-                <div ref={rightContentRef} className="max-w-xs md:text-right">
-                    <p className="text-2xl md:text-3xl font-bold leading-tight">
-                        Ready to see what AI solutions can do <span className="text-blue-500">for your business?</span>
-                    </p>
+                <div className="pointer-events-auto mt-10 flex flex-col gap-3 sm:flex-row md:gap-5">
+                    <ButtonCom title="Request a Scoping Call" icon={Phone} href="/contact" />
+                    <ButtonSecondary title="See What We Build" icon={Eye} href="#solutions" />
                 </div>
             </div>
         </section>

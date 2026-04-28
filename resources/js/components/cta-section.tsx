@@ -1,69 +1,86 @@
-import { Button } from '@/components/ui/button';
-import { Link } from '@inertiajs/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
+import { Download, Phone } from 'lucide-react';
 import { useLayoutEffect, useRef } from 'react';
+import ButtonCom from './common/ButtonCom';
+import ButtonSecondary from './common/ButtonSecondary';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface CTASectionProps {
-    title?: string;
-    description?: string;
-}
-
-export default function CTASection({
-    title = 'Start Building with a Dedicated Engineering Team',
-    description = "Let's discuss how our AI-augmented teams can accelerate your product development and reduce time-to-market.",
-}: CTASectionProps) {
+export default function CTASection() {
     const sectionRef = useRef<HTMLElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+    const bgRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(contentRef.current,
-                { y: 50, opacity: 0 },
+            // Main content reveal
+            gsap.fromTo(
+                contentRef.current,
+                { y: 100, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
+                    duration: 1.2,
+                    ease: 'power4.out',
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: 'top 90%',
-                        end: 'top 40%',
+                        start: 'top 80%',
+                        end: 'top 30%',
                         scrub: 1,
                     },
-                }
+                },
             );
 
-            ScrollTrigger.refresh();
+            // Subtle background glow pulse
+            gsap.to(bgRef.current, {
+                opacity: 0.8,
+                scale: 1.1,
+                duration: 4,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+            });
         }, sectionRef);
 
-        const timer = setTimeout(() => {
-            ScrollTrigger.refresh();
-        }, 500);
-
-        return () => {
-            ctx.revert();
-            clearTimeout(timer);
-        };
+        return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={sectionRef} className="border-t border-blue-400/20 bg-[#1e48f7] py-10 md:py-16 font-sans">
-            <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
-                <div ref={contentRef} className="space-y-8">
-                    <h2 className="mx-auto max-w-4xl text-3xl leading-tight font-extrabold text-white md:text-4xl lg:text-5xl">{title}</h2>
-                    <p className="mx-auto max-w-3xl text-sm leading-relaxed text-blue-50/90 md:text-lg">{description}</p>
-                    <div className="flex flex-wrap justify-center gap-4 pt-4">
-                        <Link href="/contact">
-                            <Button className="flex h-12 items-center gap-2 rounded-lg bg-white px-8 font-bold text-blue-600 shadow-md hover:bg-white/90">
-                                Talk to an Expert
-                                <ArrowRight className="size-5" />
-                            </Button>
-                        </Link>
+        <section ref={sectionRef} className="relative overflow-hidden bg-white py-20 font-sans md:py-26">
+            <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+                <div ref={contentRef} className="flex flex-col items-center text-center">
+                    <div className="mb-12 flex items-center gap-3">
+                        <span className="h-px w-8 bg-[#000027]/10"></span>
+                        <h4 className="text-[10px] font-bold tracking-[0.4em] text-[#000027]/40 uppercase">START A PROJECT</h4>
+                        <span className="h-px w-8 bg-[#000027]/10"></span>
+                    </div>
+
+                    <h2 className="mb-10 max-w-4xl text-5xl leading-[1.1] sm:leading-[1.05] font-black tracking-tight text-[#000027] md:text-7xl lg:text-8xl">
+                        The right system starts with the <br />
+                        <span className="bg-[#000027] px-4 text-white">right conversation.</span>
+                    </h2>
+
+                    <p className="mx-auto mb-16 max-w-2xl text-xl leading-relaxed font-medium text-[#000027]/60 md:text-2xl">
+                        Tell us what isn't working. <br className="hidden md:block" />
+                        We'll tell you what we'd build.
+                    </p>
+
+                    <div className="flex flex-col items-center justify-center gap-6 sm:flex-row md:gap-8">
+                        <ButtonCom title="Book a Scoping Call" icon={Phone} bgWhite={false} href="/contact" />
+                        <ButtonSecondary 
+                            title="Download Capabilities Overview" 
+                            icon={Download} 
+                            bgWhite={true} 
+                            href="/downloads/NeuralNet_Capabilities_Overview.docx"
+                            download="NeuralNet_Capabilities_Overview.docx"
+                        />
                     </div>
                 </div>
             </div>
+
+            {/* Top Border Accent */}
+            <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-[#000027]/5 to-transparent" />
         </section>
     );
 }

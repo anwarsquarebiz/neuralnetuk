@@ -1,7 +1,7 @@
-import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Target, Rocket } from 'lucide-react';
+import { Rocket, Target } from 'lucide-react';
+import { useLayoutEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +10,7 @@ const goals = [
         title: 'Our Vision',
         icon: Target,
         desc: 'To be a global leader in AI-powered software engineering, empowering businesses to achieve their full potential through strategic digital innovation and exceptional quality.',
-        color: 'text-blue-600',
+        color: 'text-[#000027]',
         bgColor: 'bg-blue-50',
     },
     {
@@ -29,7 +29,8 @@ export default function VisionMission() {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(headerRef.current,
+            gsap.fromTo(
+                headerRef.current,
                 { y: 30, opacity: 0 },
                 {
                     y: 0,
@@ -39,12 +40,13 @@ export default function VisionMission() {
                         start: 'top 95%',
                         end: 'top 70%',
                         scrub: 1,
-                    }
-                }
+                    },
+                },
             );
 
             if (gridRef.current) {
-                gsap.fromTo(gridRef.current.children,
+                gsap.fromTo(
+                    gridRef.current.children,
                     { y: 50, opacity: 0 },
                     {
                         y: 0,
@@ -55,8 +57,8 @@ export default function VisionMission() {
                             start: 'top 90%',
                             end: 'top 60%',
                             scrub: 1,
-                        }
-                    }
+                        },
+                    },
                 );
             }
 
@@ -71,27 +73,26 @@ export default function VisionMission() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-12 md:py-24 bg-white font-sans overflow-hidden">
-            <div ref={headerRef} className="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-10 md:mb-16">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1a3b] mb-4">
-                    Driving Innovation Through AI & Digital Transformation
-                </h2>
-                <div className="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
+        <section ref={sectionRef} className="overflow-hidden bg-white py-12 font-sans md:py-24">
+            <div ref={headerRef} className="mx-auto mb-10 max-w-7xl px-6 text-center md:mb-16 lg:px-8">
+                <h2 className="mb-4 text-3xl font-extrabold text-[#0a1a3b] md:text-4xl">Driving Innovation Through AI & Digital Transformation</h2>
+                <div className="mx-auto h-1.5 w-24 rounded-full bg-[#000027]"></div>
             </div>
 
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 font-sans">
-                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div className="mx-auto max-w-7xl px-6 font-sans lg:px-8">
+                <div ref={gridRef} className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
                     {goals.map((goal, i) => (
-                        <div key={i} className="group p-8 md:p-10 rounded-[2.5rem] bg-gray-50/50 border border-gray-100 hover:bg-white hover:shadow-2xl hover:shadow-blue-600/5 transition-all duration-500 text-center flex flex-col items-center">
-                            <div className={`size-20 ${goal.bgColor} rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                        <div
+                            key={i}
+                            className="group flex flex-col items-center rounded-[2.5rem] border border-gray-100 bg-gray-50/50 p-8 text-center transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-[#000027]/5 md:p-10"
+                        >
+                            <div
+                                className={`size-20 ${goal.bgColor} mb-8 flex items-center justify-center rounded-3xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
+                            >
                                 <goal.icon className={`size-10 ${goal.color}`} />
                             </div>
-                            <h3 className="text-2xl font-bold text-[#0a1a3b] mb-6">
-                                {goal.title}
-                            </h3>
-                            <p className="text-[#4a5568] leading-relaxed text-lg">
-                                {goal.desc}
-                            </p>
+                            <h3 className="mb-6 text-2xl font-bold text-[#0a1a3b]">{goal.title}</h3>
+                            <p className="text-lg leading-relaxed text-[#4a5568]">{goal.desc}</p>
                         </div>
                     ))}
                 </div>

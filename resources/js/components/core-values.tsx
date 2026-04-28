@@ -1,14 +1,7 @@
-import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-    Users, 
-    Zap, 
-    Handshake, 
-    Lightbulb, 
-    Heart, 
-    TrendingUp 
-} from 'lucide-react';
+import { Handshake, Heart, Lightbulb, TrendingUp, Users, Zap } from 'lucide-react';
+import { useLayoutEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +10,7 @@ const values = [
         title: 'Client Success',
         desc: 'Our success is measured by the success of our clients. We go above and beyond to ensure they achieve their goals.',
         icon: Users,
-        color: 'text-blue-600',
+        color: 'text-[#000027]',
         bgColor: 'bg-blue-50',
     },
     {
@@ -64,7 +57,8 @@ export default function CoreValues() {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(headerRef.current,
+            gsap.fromTo(
+                headerRef.current,
                 { y: 30, opacity: 0 },
                 {
                     y: 0,
@@ -74,12 +68,13 @@ export default function CoreValues() {
                         start: 'top 95%',
                         end: 'top 70%',
                         scrub: 1,
-                    }
-                }
+                    },
+                },
             );
 
             if (gridRef.current) {
-                gsap.fromTo(gridRef.current.children,
+                gsap.fromTo(
+                    gridRef.current.children,
                     { y: 40, opacity: 0 },
                     {
                         y: 0,
@@ -90,8 +85,8 @@ export default function CoreValues() {
                             start: 'top 90%',
                             end: 'top 50%',
                             scrub: 1,
-                        }
-                    }
+                        },
+                    },
                 );
             }
 
@@ -106,30 +101,29 @@ export default function CoreValues() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-12 md:py-24 bg-gray-50/30 font-sans overflow-hidden">
-            <div ref={headerRef} className="mx-auto max-w-7xl lg:px-8 text-center mb-10 md:mb-16 px-6">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1a3b] mb-4">
-                    Our Core Values
-                </h2>
-                <p className="text-[#4a5568] max-w-2xl mx-auto leading-relaxed">
+        <section ref={sectionRef} className="overflow-hidden bg-gray-50/30 py-12 font-sans md:py-24">
+            <div ref={headerRef} className="mx-auto mb-10 max-w-7xl px-6 text-center md:mb-16 lg:px-8">
+                <h2 className="mb-4 text-3xl font-extrabold text-[#0a1a3b] md:text-4xl">Our Core Values</h2>
+                <p className="mx-auto max-w-2xl leading-relaxed text-[#4a5568]">
                     Our values guide us in everything we do, from how we work with our clients to how we collaborate as a team.
                 </p>
-                <div className="h-1.5 w-24 bg-blue-600 mx-auto rounded-full mt-8"></div>
+                <div className="mx-auto mt-8 h-1.5 w-24 rounded-full bg-[#000027]"></div>
             </div>
 
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div ref={gridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
                     {values.map((v, i) => (
-                        <div key={i} className="group bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-blue-600/5 hover:-translate-y-2 transition-all duration-500">
-                            <div className={`size-14 ${v.bgColor} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500`}>
+                        <div
+                            key={i}
+                            className="group rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#000027]/5"
+                        >
+                            <div
+                                className={`size-14 ${v.bgColor} mb-6 flex items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110`}
+                            >
                                 <v.icon className={`size-7 ${v.color}`} />
                             </div>
-                            <h3 className="text-xl font-bold text-[#0a1a3b] mb-4 group-hover:text-blue-600 transition-colors">
-                                {v.title}
-                            </h3>
-                            <p className="text-[#4a5568] text-sm leading-relaxed">
-                                {v.desc}
-                            </p>
+                            <h3 className="mb-4 text-xl font-bold text-[#0a1a3b] transition-colors group-hover:text-[#000027]">{v.title}</h3>
+                            <p className="text-sm leading-relaxed text-[#4a5568]">{v.desc}</p>
                         </div>
                     ))}
                 </div>

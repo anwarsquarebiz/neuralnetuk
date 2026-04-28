@@ -171,3 +171,26 @@ html.lenis body {
 .lenis.lenis-scrolling iframe {
     pointer-events: none;
 }
+
+.button-v1 .icon * {
+  opacity: 0;
+  transform-origin: center;
+}
+
+.button-v1 .icon {
+  transform: scale(0.3);
+  transition: all ease 0.3s;
+  transform-origin: center;
+}
+
+.button-v1:hover .icon,
+.button-v1:active .icon,
+.button-v1:focus .icon {
+  transform: scale(1);
+}
+
+.button-v1:hover .icon *,
+.button-v1:active .icon *,
+.button-v1:focus .icon * {
+  opacity: 1;
+}

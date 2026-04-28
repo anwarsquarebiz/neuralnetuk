@@ -1,7 +1,7 @@
-import { useLayoutEffect, useRef } from 'react';
+import { Button } from '@/components/ui/button';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Button } from '@/components/ui/button';
+import { useLayoutEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +12,8 @@ export default function CultureSection() {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(textRef.current,
+            gsap.fromTo(
+                textRef.current,
                 { x: -50, opacity: 0 },
                 {
                     x: 0,
@@ -22,13 +23,14 @@ export default function CultureSection() {
                         start: 'top 90%',
                         end: 'top 40%',
                         scrub: 1,
-                    }
-                }
+                    },
+                },
             );
 
             if (gridRef.current) {
                 // Animate each column of the grid separately for a staggered feel
-                gsap.fromTo(gridRef.current.children,
+                gsap.fromTo(
+                    gridRef.current.children,
                     { y: (i) => (i === 0 ? 50 : 100), opacity: 0 },
                     {
                         y: 0,
@@ -39,8 +41,8 @@ export default function CultureSection() {
                             start: 'top 90%',
                             end: 'top 30%',
                             scrub: 1,
-                        }
-                    }
+                        },
+                    },
                 );
             }
 
@@ -55,23 +57,23 @@ export default function CultureSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-12 md:py-24 bg-white font-sans overflow-hidden">
+        <section ref={sectionRef} className="overflow-hidden bg-white py-12 font-sans md:py-24">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
                     {/* Left: Text Content */}
                     <div ref={textRef} className="space-y-8">
                         <div>
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1a3b] mb-6">
-                                Our Culture
-                            </h2>
-                            <p className="text-[#4a5568] text-lg leading-relaxed mb-6">
-                                At NeuralNet, we foster a culture of innovation, collaboration, and continuous learning. We believe in empowering our team members to take ownership of their work and drive meaningful results.
+                            <h2 className="mb-6 text-3xl font-extrabold text-[#0a1a3b] md:text-4xl">Our Culture</h2>
+                            <p className="mb-6 text-lg leading-relaxed text-[#4a5568]">
+                                At NeuralNet, we foster a culture of innovation, collaboration, and continuous learning. We believe in empowering our
+                                team members to take ownership of their work and drive meaningful results.
                             </p>
-                            <p className="text-[#4a5568] text-lg leading-relaxed">
-                                We are a team of passionate and dedicated professionals who are committed to delivering exceptional quality and value to our clients. Our culture is built on a foundation of trust, respect, and mutual support.
+                            <p className="text-lg leading-relaxed text-[#4a5568]">
+                                We are a team of passionate and dedicated professionals who are committed to delivering exceptional quality and value
+                                to our clients. Our culture is built on a foundation of trust, respect, and mutual support.
                             </p>
                         </div>
-                        <Button className="h-12 px-8 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-200">
+                        <Button className="h-12 rounded-xl bg-[#000027] px-8 font-bold text-white shadow-lg shadow-blue-200 hover:bg-blue-700">
                             Join our team
                         </Button>
                     </div>
@@ -79,25 +81,25 @@ export default function CultureSection() {
                     {/* Right: 2x2 Image Grid */}
                     <div ref={gridRef} className="grid grid-cols-2 gap-4">
                         <div className="space-y-4">
-                            <div className="aspect-square bg-blue-50 rounded-[2rem] overflow-hidden group">
+                            <div className="group aspect-square overflow-hidden rounded-[2rem] bg-blue-50">
                                 <picture>
                                     <source srcSet="/assets/about-us/our-culture/first.webp" type="image/webp" />
-                                    <img 
-                                        src="/assets/about-us/our-culture/first.webp" 
-                                        alt="Team Event" 
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none" 
+                                    <img
+                                        src="/assets/about-us/our-culture/first.webp"
+                                        alt="Team Event"
+                                        className="pointer-events-none h-full w-full object-cover transition-transform duration-700 select-none group-hover:scale-110"
                                         style={{ transform: 'translateZ(0)' }}
                                         loading="lazy"
                                     />
                                 </picture>
                             </div>
-                            <div className="aspect-[3/4] bg-indigo-50 rounded-[2rem] overflow-hidden group">
+                            <div className="group aspect-[3/4] overflow-hidden rounded-[2rem] bg-indigo-50">
                                 <picture>
                                     <source srcSet="/assets/about-us/our-culture/second.webp" type="image/webp" />
-                                    <img 
-                                        src="/assets/about-us/our-culture/second.webp" 
-                                        alt="Workplace" 
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none" 
+                                    <img
+                                        src="/assets/about-us/our-culture/second.webp"
+                                        alt="Workplace"
+                                        className="pointer-events-none h-full w-full object-cover transition-transform duration-700 select-none group-hover:scale-110"
                                         style={{ transform: 'translateZ(0)' }}
                                         loading="lazy"
                                     />
@@ -105,25 +107,25 @@ export default function CultureSection() {
                             </div>
                         </div>
                         <div className="space-y-4 pt-12">
-                            <div className="aspect-[3/4] bg-sky-50 rounded-[2rem] overflow-hidden group">
+                            <div className="group aspect-[3/4] overflow-hidden rounded-[2rem] bg-sky-50">
                                 <picture>
                                     <source srcSet="/assets/about-us/our-culture/third.webp" type="image/webp" />
-                                    <img 
-                                        src="/assets/about-us/our-culture/third.webp" 
-                                        alt="Collaboration" 
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none" 
+                                    <img
+                                        src="/assets/about-us/our-culture/third.webp"
+                                        alt="Collaboration"
+                                        className="pointer-events-none h-full w-full object-cover transition-transform duration-700 select-none group-hover:scale-110"
                                         style={{ transform: 'translateZ(0)' }}
                                         loading="lazy"
                                     />
                                 </picture>
                             </div>
-                            <div className="aspect-square bg-slate-50 rounded-[2rem] overflow-hidden group">
+                            <div className="group aspect-square overflow-hidden rounded-[2rem] bg-slate-50">
                                 <picture>
                                     <source srcSet="/assets/about-us/our-culture/fourth.webp" type="image/webp" />
-                                    <img 
-                                        src="/assets/about-us/our-culture/fourth.webp" 
-                                        alt="Office Fun" 
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none" 
+                                    <img
+                                        src="/assets/about-us/our-culture/fourth.webp"
+                                        alt="Office Fun"
+                                        className="pointer-events-none h-full w-full object-cover transition-transform duration-700 select-none group-hover:scale-110"
                                         style={{ transform: 'translateZ(0)' }}
                                         loading="lazy"
                                     />

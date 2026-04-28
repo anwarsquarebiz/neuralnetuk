@@ -1,119 +1,123 @@
-import { Button } from '@/components/ui/button';
-import { Link } from '@inertiajs/react';
-import { cn } from '@/lib/utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef } from 'react';
-import { 
-    Settings,
-    Handshake,
-    Users,
-    Building2
-} from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const models = [
-// ... existing models ...
-    { title: 'Fully Managed Services', icon: Settings, color: 'text-blue-500', desc: 'NeuralNet takes complete responsibility for your IT or AI operations, including infrastructure, support, monitoring, and security. This model allows businesses to focus on growth while NeuralNet manages the entire technology environment with predictable monthly costs.' },
-    { title: 'Hybrid Partnership Model', icon: Handshake, color: 'text-cyan-500', desc: 'NeuralNet works alongside your internal teams, providing additional expertise, automation capabilities, and 24/7 support. This approach enhances your existing IT or engineering teams while keeping strategic control within your organization.' },
-    { title: 'Dedicated Teams', icon: Users, color: 'text-purple-500', desc: 'Build a dedicated team of engineers, AI specialists, DevOps experts, and IT professionals exclusively aligned with your business. These teams operate as an extension of your organization, ensuring continuity, scalability, and deep integration with your operations.' },
-    { title: 'Global Capability Centre (GCC)', icon: Building2, color: 'text-green-500', desc: 'For organizations looking to scale globally, NeuralNet helps establish secure offshore delivery teams and operational centres. This model provides long-term cost efficiency, access to global talent, and enterprise-grade governance.' },
-];
-
-export default function EngagementModelsSection() {
+export default function WhyNeuralNetSection() {
     const sectionRef = useRef<HTMLElement>(null);
-    const headerRef = useRef<HTMLDivElement>(null);
-    const gridRef = useRef<HTMLDivElement>(null);
-    const ctaRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const targetRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(headerRef.current,
-                { y: 30, opacity: 0 },
+            // Circle expansion animation
+            // Triggered earlier and completes faster for a "quick" expansion
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 100%',
+                    end: 'top top',
+                    scrub: 1.5, // Much smoother and slower
+                },
+            });
+
+            tl.fromTo(
+                sectionRef.current,
                 {
-                    y: 0,
-                    opacity: 1,
-                    scrollTrigger: {
-                        trigger: headerRef.current,
-                        start: 'top 95%',
-                        end: 'top 70%',
-                        scrub: 1,
-                    },
-                }
+                    clipPath: 'circle(0% at var(--circle-x) 0%)',
+                },
+                {
+                    clipPath: 'circle(150% at var(--circle-x) 0%)',
+                    ease: 'none',
+                },
             );
 
-            if (gridRef.current) {
-                gsap.fromTo(gridRef.current.children,
-                    { y: 50, opacity: 0 },
+            // Content reveal
+            gsap.fromTo(
+                contentRef.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: 'top 40%',
+                        end: 'top 10%',
+                        scrub: 1,
+                    },
+                },
+            );
+
+            // Staggered reveal for paragraphs
+            const paragraphs = gsap.utils.toArray<HTMLElement>('.narrative-p');
+            paragraphs.forEach((p) => {
+                gsap.fromTo(
+                    p,
+                    { opacity: 0, y: 20 },
                     {
-                        y: 0,
                         opacity: 1,
-                        stagger: 0.15,
-                        ease: 'none',
+                        y: 0,
                         scrollTrigger: {
-                            trigger: gridRef.current,
-                            start: 'top 90%',
-                            end: 'top 40%',
+                            trigger: p,
+                            start: 'top 95%',
+                            end: 'top 75%',
                             scrub: 1,
                         },
-                    }
-                );
-            }
-
-            gsap.fromTo(ctaRef.current,
-                { scale: 0.9, opacity: 0 },
-                {
-                    scale: 1,
-                    opacity: 1,
-                    scrollTrigger: {
-                        trigger: ctaRef.current,
-                        start: 'top 98%',
-                        end: 'bottom 90%',
-                        scrub: 1,
                     },
-                }
-            );
-
-            ScrollTrigger.refresh();
+                );
+            });
         }, sectionRef);
 
-        const timer = setTimeout(() => {
-            ScrollTrigger.refresh();
-        }, 500);
-
-        return () => {
-            ctx.revert();
-            clearTimeout(timer);
-        };
+        return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-12 md:py-24 bg-blue-600 text-white font-sans">
-            <div ref={headerRef} className="mx-auto mb-10 md:mb-16 max-w-7xl px-6 text-center lg:px-8">
-                <h2 className="mb-6 text-4xl font-extrabold">Flexible Engagement Models</h2>
-                <p className="mx-auto max-w-4xl text-lg leading-relaxed opacity-90">
-                    NeuralNet provides flexible engagement models designed to support organisations at every stage of growth. Whether you need fully managed services, specialist support, or dedicated engineering teams, our delivery approach adapts to your business goals, technical needs, and operational scale.
-                </p>
-            </div>
+        <section
+            ref={sectionRef}
+            className="relative flex min-h-[80vh] items-center overflow-hidden bg-[#000027] font-sans [--circle-x:50%] md:[--circle-x:38%] lg:[--circle-x:41.66%]"
+            style={{ clipPath: 'circle(0% at var(--circle-x) 0%)' }}
+        >
+            <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:px-8">
+                <div ref={contentRef} className="max-w-6xl pt-8">
+                    <div className="mb-10 flex items-center gap-3">
+                        <div className="h-px w-6 bg-white/20"></div>
+                        <h4 className="text-[10px] font-bold tracking-[0.4em] text-white/60 uppercase">
+                            Narrative Protocol
+                        </h4>
+                    </div>
 
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div ref={gridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-16">
-                    {models.map((model, i) => (
-                        <div key={i} className="bg-white rounded-xl p-8 shadow-2xl flex flex-col min-h-full text-blue-900">
-                            <model.icon className={cn("size-10 mb-6", model.color)} />
-                            <h3 className="text-xl font-bold mb-6 leading-tight">{model.title}</h3>
-                            <p className="text-sm font-medium opacity-80 leading-relaxed">
-                                {model.desc}
+                    <h2 className="mb-12 text-3xl leading-[1.1] tracking-tighter uppercase md:text-5xl lg:text-6xl">
+                        <span className="font-light text-white/50">The problem with most</span><br />
+                        <span className="font-black text-white">AI deployments</span><br />
+                        <span className="font-light text-white/50">isn't the AI.</span>
+                    </h2>
+
+                    <div className="space-y-10">
+                        <p className="narrative-p text-xl leading-relaxed font-medium text-white/90 md:text-2xl">
+                            It's that organisations buy tools before they understand the problem. They deploy agents that nobody measures. They build
+                            automation and then wonder why the numbers didn't move.
+                        </p>
+
+                        <p className="narrative-p border-l-2 border-white/10 pl-8 text-xl leading-relaxed font-medium text-white/90 md:text-2xl">
+                            NeuralNet was built to fix that. We start where the problem is — in the business process, the workflow, the gap between
+                            what a team does and what it should be able to do. Then we design the system.
+                        </p>
+
+                        <div className="grid grid-cols-1 gap-12 pt-8 md:grid-cols-2">
+                            <p className="narrative-p text-lg leading-relaxed text-white/70">
+                                Every engagement produces something deployable. Every deployment is measured. Every system we build is one we can
+                                defend with data.
                             </p>
                         </div>
-                    ))}
+                    </div>
                 </div>
-                <div ref={ctaRef} className="flex justify-center">
-                    <Button asChild className="bg-white text-blue-600 hover:bg-gray-100 rounded-md px-10 py-3 h-auto text-sm font-extrabold shadow-xl">
-                        <Link href="/contact">Get In Touch</Link>
-                    </Button>
-                </div>
+            </div>
+
+            {/* Background Decorative Element */}
+            <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 opacity-10">
+                <span className="text-[300px] leading-none font-black tracking-tighter text-white/10 select-none">NEURAL</span>
             </div>
         </section>
     );
