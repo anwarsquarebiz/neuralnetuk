@@ -12,15 +12,15 @@ interface ButtonSecondaryProps {
 }
 
 const ButtonSecondary = ({ title, icon: Icon, className = '', onClick, bgWhite = true, href, download }: ButtonSecondaryProps) => {
-    const commonClasses = `group pointer-events-auto flex h-10 w-fit cursor-pointer items-center rounded-full border transition-all duration-300 md:h-11 ${
+    const commonClasses = `group pointer-events-auto flex h-auto min-h-[40px] w-fit cursor-pointer items-center justify-center rounded-full border transition-all duration-300 md:h-11 ${
         bgWhite
             ? 'border-[#000027]/10 bg-white text-[#000027] hover:border-[#000027]'
             : 'border-white/20 bg-transparent text-white hover:border-white'
-    } px-7 py-2 md:px-2 lg:py-1.5 ${className}`;
+    } px-7 py-3 md:px-2 md:py-2 lg:py-1.5 ${className}`;
 
     const innerContent = (
-        <div className="flex h-fit w-fit items-center justify-center gap-0 text-xs leading-none md:gap-4">
-            <h4 className="tracking-widest uppercase md:ml-4">{title}</h4>
+        <div className="flex h-fit w-fit items-center justify-center gap-0 text-xs leading-normal md:gap-4 md:leading-none">
+            <h4 className="text-center tracking-widest uppercase md:ml-4">{title}</h4>
             {Icon && (
                 <div
                     className={`icon hidden md:flex ${

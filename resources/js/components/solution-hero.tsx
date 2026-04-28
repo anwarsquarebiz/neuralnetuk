@@ -42,7 +42,7 @@ export default function SolutionHero({ overline, titlePart1, titlePart2, descrip
                         <span className="text-[10px] font-black tracking-[0.5em] text-[#000027]/40 uppercase">{overline}</span>
                     </div>
 
-                    <h1 className="text-5xl leading-[0.95] font-black tracking-tighter text-[#000027] uppercase italic md:text-7xl lg:text-8xl">
+                    <h1 className="text-4xl leading-[1.1] font-black tracking-tighter text-[#000027] uppercase italic sm:text-5xl sm:leading-[0.95] md:text-7xl lg:text-8xl">
                         {titlePart1} <br />
                         <span className="relative inline-block not-italic">
                             {/* Bottom Layer: The Stroke */}

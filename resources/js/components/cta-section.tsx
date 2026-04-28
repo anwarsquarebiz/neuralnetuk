@@ -56,7 +56,7 @@ export default function CTASection() {
                         <span className="h-px w-8 bg-[#000027]/10"></span>
                     </div>
 
-                    <h2 className="mb-10 max-w-4xl text-5xl leading-[1.05] font-black tracking-tight text-[#000027] md:text-7xl lg:text-8xl">
+                    <h2 className="mb-10 max-w-4xl text-5xl leading-[1.1] sm:leading-[1.05] font-black tracking-tight text-[#000027] md:text-7xl lg:text-8xl">
                         The right system starts with the <br />
                         <span className="bg-[#000027] px-4 text-white">right conversation.</span>
                     </h2>

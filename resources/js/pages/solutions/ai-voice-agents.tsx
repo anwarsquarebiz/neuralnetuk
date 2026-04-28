@@ -57,7 +57,7 @@ export default function AIVoiceAgents() {
                                 <div className="h-px w-6 bg-[#000027]/40"></div>
                                 <span className="text-[10px] font-black tracking-[0.5em] text-[#000027]/40 uppercase italic">Voice Protocol 01</span>
                             </div>
-                            <h2 className="text-3xl leading-[0.9] font-black tracking-tighter text-[#000027] uppercase italic md:text-5xl lg:text-6xl">
+                            <h2 className="text-3xl leading-[1.1] sm:leading-[0.9] font-black tracking-tighter text-[#000027] uppercase italic md:text-5xl lg:text-6xl">
                                 System <br />
                                 <span className="text-[#000027]">Capabilities.</span>
                             </h2>
@@ -73,7 +73,7 @@ export default function AIVoiceAgents() {
                     </div>
 
                     {/* Matrix Grid */}
-                    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-100 bg-gray-100 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-100 bg-gray-100 md:grid-cols-2 lg:grid-cols-3">
                         {[
                             { title: 'Inbound call handling — triage, FAQ, account management', icon: PhoneIncoming },
                             { title: 'Outbound campaigns — appointment setting, follow-up', icon: PhoneOutgoing },
@@ -116,7 +116,7 @@ export default function AIVoiceAgents() {
                             <div className="h-px w-6 bg-white/20"></div>
                             <span className="text-[10px] font-black tracking-[0.5em] text-white/40 uppercase italic">Voice Protocol 02</span>
                         </div>
-                        <h3 className="text-3xl leading-[0.9] font-black tracking-tight text-white uppercase italic md:text-5xl lg:text-6xl">
+                        <h3 className="text-3xl leading-[1.1] sm:leading-[0.9] font-black tracking-tight text-white uppercase italic md:text-5xl lg:text-6xl">
                             Operational <br />
                             <span className="text-white/40">Use Cases.</span>
                         </h3>

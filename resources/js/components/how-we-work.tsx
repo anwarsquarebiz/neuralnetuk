@@ -95,7 +95,7 @@ export default function HowWeWorkSection() {
                             <div className="h-px w-6 bg-blue-600/40"></div>
                             <span className="text-[10px] font-black tracking-[0.5em] text-[#000027]/40 uppercase">Operational Discipline</span>
                         </div>
-                        <h2 className="text-3xl leading-[1] tracking-tighter text-[#000027] uppercase md:text-5xl lg:text-6xl">
+                        <h2 className="text-3xl leading-[1.1] sm:leading-[1] tracking-tighter text-[#000027] uppercase md:text-5xl lg:text-6xl">
                             <span className="font-light opacity-50">The methodology of</span>
                             <br />
                             <span className="font-black">High Performance.</span>
@@ -109,7 +109,7 @@ export default function HowWeWorkSection() {
                 {/* Steps Section: Protocol Blocks in Light Mode */}
                 <div
                     ref={gridRef}
-                    className="grid grid-cols-1 gap-px overflow-hidden rounded-[2.5rem] border border-[#000027]/5 bg-[#000027]/5 lg:grid-cols-4"
+                    className="grid grid-cols-1 gap-px overflow-hidden rounded-[2.5rem] border border-[#000027]/5 bg-[#000027]/5 md:grid-cols-2 lg:grid-cols-4"
                 >
                     {steps.map((step, i) => (
                         <div key={i} className="group relative bg-gray-50 p-10 transition-all duration-700 hover:bg-white hover:shadow-2xl">

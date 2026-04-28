@@ -126,7 +126,7 @@ export default function DeliveryProcessSection() {
                                 <span className="h-px w-8 bg-[#000027]/20"></span>
                                 <h4 className="text-[10px] font-bold tracking-[0.4em] text-[#000027]/60 uppercase">Our Process</h4>
                             </div>
-                            <h2 className="text-5xl leading-[1.05] font-black tracking-tight text-[#000027] md:text-6xl lg:text-7xl">
+                            <h2 className="text-5xl leading-[1.1] sm:leading-[1.05] font-black tracking-tight text-[#000027] md:text-6xl lg:text-7xl">
                                 Delivery
                                 <br />
                                 <span className="text-[#000027]/30">Narrative.</span>

@@ -87,7 +87,7 @@ export default function Cybersecurity() {
                                 <div className="h-px w-6 bg-[#000027]/40"></div>
                                 <span className="text-[10px] font-black tracking-[0.5em] text-[#000027]/40 uppercase italic">Threat Protocol 01</span>
                             </div>
-                            <h2 className="text-3xl leading-[0.9] font-black tracking-tighter text-[#000027] uppercase italic md:text-5xl lg:text-6xl">
+                            <h2 className="text-3xl leading-[1.1] sm:leading-[0.9] font-black tracking-tighter text-[#000027] uppercase italic md:text-5xl lg:text-6xl">
                                 Adversarial <br />
                                 <span className="text-[#000027]">Validation.</span>
                             </h2>
@@ -101,7 +101,7 @@ export default function Cybersecurity() {
                     </div>
 
                     {/* Security Matrix Grid */}
-                    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-100 bg-gray-100 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-100 bg-gray-100 md:grid-cols-2 lg:grid-cols-3">
                         {penTestingFeatures.map((item, i) => (
                             <div
                                 key={i}
@@ -143,7 +143,7 @@ export default function Cybersecurity() {
                             <div className="h-px w-6 bg-white/20"></div>
                             <span className="text-[10px] font-black tracking-[0.5em] text-white/40 uppercase">Offering 02</span>
                         </div>
-                        <h3 className="text-3xl leading-[0.9] font-black tracking-tight text-white uppercase italic md:text-5xl lg:text-6xl">
+                        <h3 className="text-3xl leading-[1.1] sm:leading-[0.9] font-black tracking-tight text-white uppercase italic md:text-5xl lg:text-6xl">
                             Agentic AI <br />
                             <span className="text-white/40">SOC.</span>
                         </h3>

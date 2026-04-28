@@ -60,7 +60,7 @@ export default function LocationSection() {
                 </div>
 
                 {/* The Narrative Heading */}
-                <h2 className="mb-16 text-5xl leading-[1] font-black tracking-tighter text-[#000027] uppercase italic md:text-7xl lg:text-8xl">
+                <h2 className="mb-16 text-5xl leading-[1.1] sm:leading-[1] font-black tracking-tighter text-[#000027] uppercase italic md:text-7xl lg:text-8xl">
                     Rooted in the UK. <br />
                     <span className="text-[#000027]/20 not-italic">Operating at scale.</span>
                 </h2>

@@ -116,7 +116,7 @@ export default function AIGuardian() {
                                         Problem Statement 01
                                     </span>
                                 </div>
-                                <h3 className="text-5xl leading-[0.85] font-black tracking-tighter text-white uppercase italic md:text-7xl lg:text-8xl">
+                                <h3 className="text-5xl leading-[1.1] sm:leading-[0.85] font-black tracking-tighter text-white uppercase italic md:text-7xl lg:text-8xl">
                                     The Visibility <br />
                                     <span className="text-white/20">Gap.</span>
                                 </h3>
@@ -204,7 +204,7 @@ export default function AIGuardian() {
                                     Oversight Protocol 02
                                 </span>
                             </div>
-                            <h2 className="text-3xl leading-[0.9] font-black tracking-tighter text-[#000027] uppercase italic md:text-5xl lg:text-6xl">
+                            <h2 className="text-3xl leading-[1.1] sm:leading-[0.9] font-black tracking-tighter text-[#000027] uppercase italic md:text-5xl lg:text-6xl">
                                 Continuous Operational <br />
                                 <span className="text-[#000027]">Intelligence.</span>
                             </h2>
@@ -220,7 +220,7 @@ export default function AIGuardian() {
                     </div>
 
                     {/* Matrix Grid */}
-                    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-100 bg-gray-100 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-100 bg-gray-100 md:grid-cols-2 lg:grid-cols-3">
                         {[
                             {
                                 title: 'Performance Monitoring',

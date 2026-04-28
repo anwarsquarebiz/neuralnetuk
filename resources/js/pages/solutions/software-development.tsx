@@ -101,7 +101,7 @@ export default function SoftwareDevelopment() {
                                 <div className="h-px w-6 bg-white/20"></div>
                                 <span className="text-[10px] font-black tracking-[0.5em] text-white/40 uppercase">System Protocol 01</span>
                             </div>
-                            <h2 className="text-3xl leading-[1] tracking-tighter uppercase md:text-5xl lg:text-6xl">
+                            <h2 className="text-3xl leading-[1.1] sm:leading-[1] tracking-tighter uppercase md:text-5xl lg:text-6xl">
                                 <span className="font-light text-white/50">Custom Systems</span>
                                 <br />
                                 <span className="font-black text-white">Built for Scale.</span>
@@ -113,7 +113,7 @@ export default function SoftwareDevelopment() {
                     </div>
 
                     {/* Capabilities Grid: Protocol Blocks style */}
-                    <div className="mb-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/5 bg-white/5 lg:grid-cols-5">
+                    <div className="mb-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/5 bg-white/5 md:grid-cols-2 lg:grid-cols-5">
                         {capabilities.map((cap, i) => (
                             <div key={i} className="group relative bg-[#000027] p-8 transition-all duration-700 hover:bg-white/[0.01]">
                                 <div className="mb-8 flex items-start justify-between">
@@ -156,7 +156,7 @@ export default function SoftwareDevelopment() {
             <section className="border-t border-gray-100 bg-white py-12 md:py-16">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
                     {/* Header */}
-                    <div className="mb-8 flex items-center justify-between">
+                    <div className="mb-8 flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
                         <div className="flex items-center gap-3">
                             <div className="h-px w-6 bg-[#000027]/40"></div>
                             <span className="text-[10px] font-black tracking-[0.5em] text-[#000027]/40 uppercase">Specialisation</span>
@@ -165,7 +165,7 @@ export default function SoftwareDevelopment() {
                         <span className="text-[10px] font-black tracking-[0.3em] text-[#000027]/20 uppercase">Technical Specialisation Layer</span>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-100 bg-gray-100 lg:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-100 bg-gray-100 md:grid-cols-2 lg:grid-cols-2">
                         {/* Gen AI Block */}
                         <div className="reveal-section group relative bg-white p-8 transition-all duration-700 hover:bg-gray-50">
                             <div className="mb-8 flex items-start justify-between">
@@ -234,7 +234,7 @@ export default function SoftwareDevelopment() {
                                 <div className="h-px w-6 bg-[#000027]/40"></div>
                                 <span className="text-[10px] font-black tracking-[0.5em] text-[#000027]/40 uppercase">Utility Protocols</span>
                             </div>
-                            <h2 className="text-3xl leading-[0.9] font-black tracking-tighter text-[#000027] uppercase italic md:text-5xl lg:text-6xl">
+                            <h2 className="text-3xl leading-[1.1] sm:leading-[0.9] font-black tracking-tighter text-[#000027] uppercase italic md:text-5xl lg:text-6xl">
                                 Operational <br />
                                 <span className="text-[#000027]">Use Cases.</span>
                             </h2>

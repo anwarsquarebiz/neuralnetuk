@@ -85,7 +85,7 @@ const CorePositioning = () => {
                             <div className="h-px w-6 bg-blue-500/40"></div>
                             <span className="text-[10px] font-black tracking-[0.5em] text-blue-400/80 uppercase">Positioning Protocol</span>
                         </div>
-                        <h2 className="text-3xl leading-[1] tracking-tighter uppercase md:text-5xl lg:text-6xl">
+                        <h2 className="text-3xl leading-[1.1] sm:leading-[1] tracking-tighter uppercase md:text-5xl lg:text-6xl">
                             <span className="font-light text-white/50">Engineered for</span>
                             <br />
                             <span className="font-black text-white">Exceptional Value.</span>
@@ -99,7 +99,7 @@ const CorePositioning = () => {
                 {/* Pillars Section: Protocol Blocks */}
                 <div
                     ref={pillarsRef}
-                    className="mb-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/5 bg-white/5 lg:grid-cols-3"
+                    className="mb-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/5 bg-white/5 md:grid-cols-2 lg:grid-cols-3"
                 >
                     {[
                         {

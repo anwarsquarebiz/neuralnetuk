@@ -12,13 +12,13 @@ interface ButtonComProps {
 }
 
 const ButtonCom = ({ title, icon: Icon, className = '', onClick, bgWhite = false, type = 'button', href }: ButtonComProps) => {
-    const commonClasses = `group button-v1 pointer-events-auto flex h-10 w-fit cursor-pointer items-center rounded-full md:h-11 ${
+    const commonClasses = `group button-v1 pointer-events-auto flex h-auto min-h-[40px] w-fit cursor-pointer items-center justify-center rounded-full md:h-11 ${
         bgWhite ? 'bg-white text-[#000027]' : 'bg-[#000027] text-white'
-    } px-7 py-2 transition-all duration-300 md:px-2 lg:py-1.5 ${className}`;
+    } px-7 py-3 transition-all duration-300 md:px-2 md:py-2 lg:py-1.5 ${className}`;
 
     const innerContent = (
-        <div className="flex h-fit w-fit items-center justify-center gap-0 text-xs leading-none md:gap-4">
-            <h4 className="tracking-widest uppercase md:ml-4">{title}</h4>
+        <div className="flex h-fit w-fit items-center justify-center gap-0 text-xs leading-normal md:gap-4 md:leading-none">
+            <h4 className="text-center tracking-widest uppercase md:ml-4">{title}</h4>
             {Icon && (
                 <div
                     className={`icon hidden md:flex ${
