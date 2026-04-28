@@ -1,8 +1,10 @@
-import { Button } from '@/components/ui/button';
-import { Link } from '@inertiajs/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Eye, Phone } from 'lucide-react';
 import { useLayoutEffect, useRef } from 'react';
+import ButtonCom from './common/ButtonCom';
+import ButtonSecondary from './common/ButtonSecondary';
+import Orb from './creative-components/Orb';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,9 +47,9 @@ export default function HeroSection() {
                 );
             }
 
-            // Scroll-triggered parallax effect for background image
-            gsap.to(imageRef.current, {
-                y: '20%',
+            // Parallax effect for the entire hero section (Slow move - Increased intensity)
+            gsap.to(containerRef.current, {
+                yPercent: 50,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: containerRef.current,
@@ -56,6 +58,7 @@ export default function HeroSection() {
                     scrub: true,
                 },
             });
+
             ScrollTrigger.refresh();
         }, containerRef);
 
@@ -70,9 +73,12 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section ref={containerRef} className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[#050B20] font-sans text-white">
+        <section
+            ref={containerRef}
+            className="relative z-0 flex min-h-[100svh] flex-col justify-start overflow-hidden bg-white font-sans text-[#000027]"
+        >
             {/* Hero Background Image */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
+            {/* <div className="absolute inset-0 z-0 overflow-hidden">
                 <picture>
                     <source srcSet="/assets/hero  image.webp" type="image/webp" />
                     <img
@@ -86,64 +92,42 @@ export default function HeroSection() {
                     />
                 </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050B20] via-transparent to-transparent"></div>
+            </div> */}
+
+            {/* <LightPillar
+                topColor="#5227FF"
+                bottomColor="#000027"
+                intensity={1.4}
+                rotationSpeed={1.1}
+                glowAmount={0.004}
+                pillarWidth={6}
+                pillarHeight={0.4}
+                noiseIntensity={0.8}
+                pillarRotation={45}
+                interactive={true}
+                mixBlendMode="multiply"
+                quality="high"
+                className="z-0"
+            /> */}
+
+            <div className="absolute inset-0">
+                <Orb hoverIntensity={1.5} rotateOnHover hue={0} forceHoverState={false} backgroundColor="#ffffff" />
             </div>
 
-            <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col px-6 pt-24 md:pt-40 lg:px-8 xl:mb-12">
-                <h1 ref={titleRef} className="text-3xl leading-tight font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-                    NeuralNet Delivering
+            <div className="max-w-8xl pointer-events-none relative z-10 mx-auto flex w-full flex-col px-6 pt-24 md:pt-40 lg:px-20 xl:mb-12">
+                <h1 ref={titleRef} className="text-2xl leading-tight font-extrabold tracking-tight md:text-4xl lg:text-5xl">
+                    Most organisations don't have an AI problem.
                 </h1>
-                <h2
-                    ref={subtitleRef}
-                    className="font-sans text-3xl leading-tight font-extrabold tracking-tight text-blue-500 md:text-5xl lg:text-6xl"
-                >
-                    Business Outcomes with AI
+                <h2 ref={subtitleRef} className="font-sans text-2xl leading-tight font-extrabold tracking-tight md:text-4xl lg:text-5xl">
+                    They have a systems problem.
                 </h2>
-                <p ref={textRef} className="mt-4 text-lg font-medium text-gray-300 italic md:text-xl">
-                    (Limitless Possibilities)
+                <p ref={textRef} className="mt-6 w-full text-base leading-relaxed md:w-[70%] md:text-lg lg:w-1/2">
+                    NeuralNet designs and deploys the AI infrastructure that turns business problems into complete solutions — software, security,
+                    agents, avatars, and the oversight layer that makes sure all of it performs.
                 </p>
-            </div>
-
-            {/* Hero Content - Positioned at the bottom */}
-            <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-12 px-6 py-8 md:flex-row md:items-end md:pb-24 lg:px-8">
-                {/* Left Part */}
-                <div className="max-w-2xl flex-1">
-                    <ul ref={listRef} className="mb-10 space-y-4">
-                        <li className="flex items-start gap-3 text-sm font-medium text-gray-200 md:text-base">
-                            <span className="mt-2 size-1.5 flex-shrink-0 rounded-full bg-blue-500"></span>
-                            <span>
-                                Most-rated <span className="font-bold text-white">#1 App Development</span> Company{' '}
-                                <span className="font-bold text-white">on Clutch</span> in India and USA.
-                            </span>
-                        </li>
-                        <li className="flex items-start gap-3 text-sm font-medium text-gray-200 md:text-base">
-                            <span className="mt-2 size-1.5 flex-shrink-0 rounded-full bg-blue-500"></span>
-                            <span>
-                                Trusted by <span className="font-bold text-white">20+ Fortune 500 Companies</span> and a Clutch Leader.
-                            </span>
-                        </li>
-                        <li className="flex items-start gap-3 text-sm font-medium text-gray-200 md:text-base">
-                            <span className="mt-2 size-1.5 flex-shrink-0 rounded-full bg-blue-500"></span>
-                            <span>
-                                We&apos;ve been Redefining Excellence for over <span className="font-bold text-white">Two Decades.</span>
-                            </span>
-                        </li>
-                    </ul>
-                    <div ref={buttonRef}>
-                        <Button
-                            asChild
-                            size="lg"
-                            className="h-auto rounded-md bg-[#000027]/80 px-10 py-2 text-sm font-bold text-white hover:bg-[#000027] md:text-base"
-                        >
-                            <Link href="/contact">Request A Call</Link>
-                        </Button>
-                    </div>
-                </div>
-
-                {/* Right Part */}
-                <div ref={rightContentRef} className="max-w-xs md:text-right">
-                    <p className="text-2xl leading-tight font-bold md:text-3xl">
-                        Ready to see what AI solutions can do <span className="text-blue-500">for your business?</span>
-                    </p>
+                <div className="pointer-events-auto mt-10 flex flex-col gap-3 sm:flex-row md:gap-5">
+                    <ButtonCom title="Request a Scoping Call" icon={Phone} href="/contact" />
+                    <ButtonSecondary title="See What We Build" icon={Eye} href="#solutions" />
                 </div>
             </div>
         </section>

@@ -29,6 +29,14 @@ Route::get('/services/{slug}', function ($slug) {
     ]);
 });
 
+Route::get('/solutions', function () {
+    return Inertia::render('services'); // Using services.tsx as index for now, or I can create a new solutions index
+})->name('solutions');
+
+Route::get('/solutions/{slug}', function ($slug) {
+    return Inertia::render("solutions/$slug");
+});
+
 Route::get('/consulting', function () {
     return Inertia::render('consulting');
 });

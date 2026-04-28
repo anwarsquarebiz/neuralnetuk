@@ -1,10 +1,8 @@
-import AboutUsStats from '@/components/about-us-stats';
-import BrandTrustSection from '@/components/brand-trust';
+import CorePositioning from '@/components/core-positioning';
 import CTASection from '@/components/cta-section';
 import DeliveryProcessSection from '@/components/delivery-process-section';
-import EngagementModelsSection from '@/components/engagement-models-section';
+import WhyNeuralNetSection from '@/components/engagement-models-section';
 import HeroSection from '@/components/hero-section';
-import PremiumServicesSection from '@/components/premium-services-section';
 import ServicesSection from '@/components/services-section';
 import MarketingLayout from '@/layouts/marketing-layout';
 import { Head } from '@inertiajs/react';
@@ -18,10 +16,11 @@ export default function Home() {
             <HeroSection />
 
             {/* Section 2: Stats / About Us */}
-            <AboutUsStats />
+            {/* <AboutUsStats /> */}
+            <CorePositioning />
 
             {/* Section 3: Brand Trust */}
-            <BrandTrustSection />
+            {/* <BrandTrustSection /> */}
 
             {/* Section 4: Services Grid */}
             <ServicesSection />
@@ -29,11 +28,11 @@ export default function Home() {
             {/* Section 5: Delivery Process */}
             <DeliveryProcessSection />
 
-            {/* Section 6: Engagement Models */}
-            <EngagementModelsSection />
+            {/* Section 6: Why NeuralNet Narrative */}
+            <WhyNeuralNetSection />
 
             {/* Section 7: Premium Services */}
-            <PremiumServicesSection />
+            {/* <PremiumServicesSection /> */}
 
             {/* Section 8: CTA */}
             <CTASection

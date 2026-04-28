@@ -63,7 +63,10 @@ export default function AboutUsStats() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="overflow-hidden bg-[#000027] py-12 font-sans text-white md:py-20">
+        <section
+            ref={sectionRef}
+            className="relative z-10 overflow-hidden bg-[#000027] py-12 font-sans text-white shadow-[0_-15px_60px_rgba(0,0,0,0.4)] md:py-20"
+        >
             <div ref={headerRef} className="mx-auto mb-10 max-w-7xl px-6 text-center md:mb-16 lg:px-8">
                 <h2 className="mb-6 text-3xl font-extrabold break-words md:text-4xl">About Us</h2>
                 <p className="mx-auto max-w-4xl text-lg leading-relaxed opacity-90">
